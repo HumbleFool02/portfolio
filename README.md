@@ -34,7 +34,7 @@ assets/js/comet.js      the comet that circles the hero button's edge
 assets/js/sunmoon.js    sun by day, moon by night in the hero, drawn on a canvas (real moon phase)
 assets/js/gravity-bend.js  lets the sun or moon lean into the gravity well and recoil on release
 assets/js/project-cards.js opens each project card's write-up in a dialog
-assets/js/project-deck.js  pins Projects on wider screens while the cards ride in one by one
+assets/js/project-deck.js  pins Projects at 1000px and wider while the cards ride in one by one
 assets/js/warp-sound.js the warp's sound, made with Web Audio (no audio files)
 assets/js/hole-sound.js the black hole's sound while you hold: NASA's Perseus cluster sonification
 assets/js/email-links.js email links copy the address and offer Gmail or the mail app
@@ -108,6 +108,11 @@ then whichever detail blocks it needs: metrics, a decision log, a callout, a fac
 On the page each project shows as a square card (`.pcard`: a cover drawn in SVG, one line, two
 numbers); clicking it opens the full write-up in a `<dialog>` (`assets/js/project-cards.js`), and a link
 to `#p-<name>` opens that project directly. Adding a project means a card and a dialog.
+
+How many cards share a row depends on how many fit. At 1000px and wider all four sit in one overlapping,
+slightly tilted row, and the section pins while they ride in one by one (`assets/js/project-deck.js`).
+Narrower screens get an upright grid, two to a row, and phones (620px and narrower) one card under
+another; there each card rises in as it scrolls into view.
 
 Photos and screenshots go in `assets/img/`. A `.gallery` takes one to three `<figure class="media">`:
 one fills the row; with more, the first sits beside a stack of the others.

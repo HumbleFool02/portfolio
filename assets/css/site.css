@@ -317,9 +317,12 @@ html[data-pk-intro] :is(.site-header, .section, .dock, .sky-hint, .pk-orb-wrap) 
 
 /* ── projects ─────────────────────────────────────────────────────────── */
 
-/* project cards: square, slightly tilted, each opening its write-up in a dialog.
-   Phones: a column, each card rising in as it scrolls into view. Wider screens: one overlapping row across the
-   window; while the deck is pinned (assets/js/project-deck.js sets --rise per card) they ride in one by one.
+/* project cards: square, each opening its write-up in a dialog. How many share a row depends on how many fit:
+   1000px and wider: all four in one overlapping, slightly tilted row across the window (four cards of at least
+     220px, overlapping by 8%, need 3.76 card widths plus the side lanes); while the deck is pinned
+     (assets/js/project-deck.js sets --rise per card) they ride in one by one.
+   Narrower: an upright grid, two to a row, and on phones one under another; each card rises in as it scrolls
+     into view.
    A hovered card comes to the top, and keeps its place there until it has settled back. */
 .pcards { display: grid; grid-template-columns: minmax(0, 1fr); gap: 22px; margin: 0; padding: 10px 6px 0; list-style: none; }
 .pcards > li { position: relative; container-type: inline-size; transition: z-index 0s .45s; }
@@ -328,13 +331,17 @@ html[data-pk-intro] :is(.site-header, .section, .dock, .sky-hint, .pk-orb-wrap) 
 .pcards > li:nth-child(2) { --tilt: 1.5deg; --dy: 22px; --spin: 7deg; }
 .pcards > li:nth-child(3) { --tilt: -1.5deg; --dy: -8px; --spin: -6deg; }
 .pcards > li:nth-child(4) { --tilt: 3deg; --dy: 16px; --spin: 10deg; }
-@media (max-width: 760px) {
-  /* phones: smaller cards in a loose zigzag, since they arrive one at a time */
-  .pcards > li { width: min(276px, 72vw); justify-self: start; }
-  .pcards > li:nth-child(even) { justify-self: end; }
+@media (max-width: 999px) {
+  /* two to a row, lined up square to the page (nth-child(n) to outrank each card's own tilt above) */
+  .pcards { grid-template-columns: repeat(2, minmax(0, 380px)); justify-content: center; gap: 26px; }
+  .pcards > li:nth-child(n) { --tilt: 0deg; }
+}
+@media (max-width: 620px) {
+  /* phones: one card under another */
+  .pcards { grid-template-columns: minmax(0, 420px); gap: 22px; }
 }
 .pcards > li:hover, .pcards > li:focus-within { z-index: 10; transition: z-index 0s; }
-@media (min-width: 761px) {
+@media (min-width: 1000px) {
   .pcards {
     /* four cards overlapping by 8% need 3.76 card widths; fill the space between the side lanes, mind the height */
     --card: clamp(220px, min((100vw - 2 * max(var(--page-pad), var(--dock-lane))) / 3.76, 100vh - 330px), 520px);
@@ -354,7 +361,7 @@ html[data-pk-intro] :is(.site-header, .section, .dock, .sky-hint, .pk-orb-wrap) 
 .pdeck[data-pinned] { height: calc(100vh + 230vh); }
 .pdeck[data-pinned] .pdeck__stage { position: sticky; top: 0; height: 100vh; display: flex; flex-direction: column; justify-content: center; padding-top: 56px; }
 @supports (animation-timeline: view()) {
-  @media (max-width: 760px) and (prefers-reduced-motion: no-preference) {
+  @media (max-width: 999px) and (prefers-reduced-motion: no-preference) {
     .pcards > li { animation: pk-card-rise linear both; animation-timeline: view(); animation-range: entry 0% cover 32%; }
   }
 }

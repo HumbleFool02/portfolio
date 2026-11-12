@@ -5,13 +5,14 @@
  * cards in place before the page moves on.
  *
  * Writes --rise (0 below the screen, 1 in place) on each card; the CSS turns it into the movement.
- * Phones, short windows and reduced motion get no pin: the cards simply sit in place.
+ * Only when all four cards share a row (1000px and wider, as in site.css) and the window is tall enough; narrower
+ * screens, where the cards stack two to a row or one under another, short windows and reduced motion get no pin.
  */
 const HOLD = 0.6;  // the closing hold, in card-sized slices of the scroll
 
 export function startProjectDeck(deck) {
   const items = [...deck.querySelectorAll('.pcards > li')];
-  const wide = matchMedia('(min-width: 761px) and (min-height: 600px)');
+  const wide = matchMedia('(min-width: 1000px) and (min-height: 600px)');
   const reduce = matchMedia('(prefers-reduced-motion: reduce)');
   const slice = 1 / (items.length + HOLD);
   let raf = 0;
