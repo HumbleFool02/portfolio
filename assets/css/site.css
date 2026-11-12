@@ -602,10 +602,11 @@ html:has(.pdialog[open]) { overflow: hidden; }
   margin-top: 70px; padding-top: 22px; border-top: 1px solid rgba(var(--pk-ink-rgb), .08);
   font-family: var(--font-mono); font-size: 11px; color: rgba(var(--pk-ink-rgb), .56);
 }
-/* NASA's credit for the black hole's sound (assets/js/hole-sound.js), on a line of its own */
-.credit { flex-basis: 100%; color: rgba(var(--pk-ink-rgb), .4); }
-.credit a { color: inherit; text-decoration: underline; text-decoration-color: rgba(var(--pk-ink-rgb), .2); text-underline-offset: 3px; }
-.credit a:hover, .credit a:focus-visible { color: var(--pk-accent); text-decoration-color: currentColor; }
+/* credits, on a line of their own: NASA for the black hole's sound (assets/js/hole-sound.js), Icons8 for the favicon */
+.credits { flex-basis: 100%; color: rgba(var(--pk-ink-rgb), .4); }
+.credits a { color: inherit; text-decoration: underline; text-decoration-color: rgba(var(--pk-ink-rgb), .2); text-underline-offset: 3px; }
+.credits a:hover, .credits a:focus-visible { color: var(--pk-accent); text-decoration-color: currentColor; }
+.credits__sound + .credits__icon::before { content: '·'; margin: 0 .7em; }
 /* "Made with ♥ and Claude": the heart beats when you point at the line */
 .made { display: inline-flex; align-items: center; gap: 6px; }
 .made__heart { color: var(--pk-accent); }
@@ -672,6 +673,7 @@ html .gate.is-leaving :is(.gate__inner) { opacity: 0; transform: scale(.97); tra
 .lost__title { font-size: clamp(30px, 5vw, 52px); font-weight: 600; letter-spacing: -0.03em; }
 .lost__text { color: rgba(var(--pk-ink-rgb), .7); }
 .lost__home { margin-top: 12px; padding: 11px 20px; font-size: 12.5px; }
+.lost__credits { position: fixed; left: 0; right: 0; bottom: 18px; font-family: var(--font-mono); font-size: 11px; }
 
 /* ── email note ───────────────────────────────────────────────────────── */
 
@@ -911,7 +913,8 @@ html:not(.js) .sky-hint { display: none; }
   html { scroll-behavior: auto; }
   .tw, .avail__ring, .shimmer, .headline, .decision__body, .timeline__star svg, .timeline__ring { animation: none !important; }
   .timeline__body, .timeline__fill { transition: none; }
-  .sky-hint, .replay, .credit { display: none; }  /* no gravity well or warp intro, so no black hole sound either */
+  .sky-hint, .replay, .credits__sound { display: none; }  /* no gravity well or warp intro, so no black hole sound either */
+  .credits__icon::before { content: none !important; }
   .comet { display: none; }  /* the outline pill stays, without the orbit */
   .pcard, .pcard__go { transition: none; }
   .toast { transition: none; }

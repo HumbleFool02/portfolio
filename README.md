@@ -39,7 +39,9 @@ assets/js/warp-sound.js the warp's sound, made with Web Audio (no audio files)
 assets/js/hole-sound.js the black hole's sound while you hold: NASA's Perseus cluster sonification
 assets/js/email-links.js email links copy the address and offer Gmail or the mail app
 assets/resume/          the resume PDF; links open it in the browser's viewer, in a new tab
-assets/icons/           favicon (SVG, 32px PNG, apple-touch-icon) and the text-badge stack icons
+assets/icons/           favicon (SVG, 32px PNG, apple-touch-icon) and the text-badge stack icons. The favicon
+                        is from Icons8, whose free licence needs a visible link to icons8.com: it's in the
+                        footer and on the 404 page
 assets/audio/           the black hole's sound, a 20 s seamless loop (AAC, 111 KB)
 data/sky.json           constellation data, generated (don't edit by hand)
 scripts/constellations.py
