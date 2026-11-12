@@ -1,0 +1,680 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <!-- only this site, Google Fonts and the Simple Icons CDN may load anything; no inline scripts or styles,
+       no plugins, no forms. frame-ancestors (clickjacking) can only be set as a header by the host. -->
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data: https://cdn.simpleicons.org; connect-src 'self'; object-src 'none'; base-uri 'self'; form-action 'none'">
+  <meta name="referrer" content="strict-origin-when-cross-origin">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Piyush Kasle</title>
+  <meta name="description" content="Piyush Kasle, software engineer for backend and full stack work with a lean toward ML infrastructure: model serving, deployment and monitoring. MS Software Engineering, Florida Tech. Available to start immediately.">
+  <meta name="color-scheme" content="dark">
+  <meta name="theme-color" content="#0c1530">
+  <link rel="icon" href="assets/icons/favicon.svg" type="image/svg+xml">
+  <link rel="icon" href="assets/icons/favicon-32.png" type="image/png" sizes="32x32">
+  <link rel="apple-touch-icon" href="assets/icons/apple-touch-icon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap">
+  <link rel="stylesheet" href="assets/css/site.css">
+  <link rel="preload" href="data/sky.json" as="fetch" crossorigin>
+  <script src="assets/js/intro-gate.js"></script>
+  <script type="module" src="assets/js/main.js"></script>
+</head>
+<body>
+
+<svg class="sprite" aria-hidden="true" focusable="false">
+  <symbol id="star" viewBox="0 0 24 24">
+    <path fill="currentColor" d="M12 0C12.9 7.6 16.4 11.1 24 12C16.4 12.9 12.9 16.4 12 24C11.1 16.4 7.6 12.9 0 12C7.6 11.1 11.1 7.6 12 0Z"/>
+  </symbol>
+  <symbol id="heart" viewBox="0 0 24 24"><path fill="currentColor" d="M12 21.2C11.6 21 3.6 16.3 2 10.9 1 7.4 3.2 3.8 6.8 3.8c2.1 0 3.8 1.1 5.2 3 1.4-1.9 3.1-3 5.2-3 3.6 0 5.8 3.6 4.8 7.1C20.4 16.3 12.4 21 12 21.2Z"/></symbol>
+  <!-- official brand marks (GitHub mark, LinkedIn "in" bug), single colour as their guidelines allow -->
+  <symbol id="icon-github" viewBox="0 0 24 24">
+    <path fill="currentColor" d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/>
+  </symbol>
+  <symbol id="icon-linkedin" viewBox="0 0 24 24">
+    <path fill="currentColor" d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+  </symbol>
+  <!-- our own contact icons (resume, email): line work with small four-point stars as the nodes -->
+  <symbol id="icon-resume" viewBox="0 0 24 24"><!-- a PDF page with a folded corner -->
+    <g fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M5.5 2.5h9l4.5 4.5v14.5h-13.5z"/><path d="M14.5 2.5V7h4.5"/>
+    </g>
+    <text x="12.25" y="17.4" text-anchor="middle" font-family="ui-monospace,Menlo,monospace" font-size="5.4" font-weight="700" letter-spacing="0.2" fill="currentColor">PDF</text>
+    <path fill="currentColor" d="M9.2 5.2Q9.2 7.4 11.4 7.4Q9.2 7.4 9.2 9.6Q9.2 7.4 7 7.4Q9.2 7.4 9.2 5.2Z"/>
+  </symbol>
+  <symbol id="icon-email" viewBox="0 0 24 24"><!-- an envelope sealed with a star -->
+    <g fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+      <rect x="2.8" y="5.2" width="18.4" height="13.6" rx="2.2"/><path d="M3.4 6.2l6.4 5.2M20.6 6.2l-6.4 5.2"/>
+    </g>
+    <path fill="currentColor" d="M12 9Q12 12.6 15.6 12.6Q12 12.6 12 16.2Q12 12.6 8.4 12.6Q12 12.6 12 9Z"/>
+  </symbol>
+</svg>
+
+<canvas class="sky" data-sky aria-hidden="true"></canvas>
+<div class="grain" aria-hidden="true"></div>
+
+<!-- the Enter screen (assets/js/enter-gate.js): the visitor's click starts the warp, with sound if they like.
+     Shown only while <html> has data-pk-gate, which assets/js/intro-gate.js sets before the first paint. -->
+<div class="gate" data-gate role="dialog" aria-modal="true" aria-labelledby="gate-hello">
+  <div class="gate__inner">
+    <!-- a satellite circling the greeting on a tilted orbit; enter-gate.js moves it, passing behind the text on the far side -->
+    <div class="gate__ring" aria-hidden="true"></div>
+    <svg class="gate__sat" viewBox="0 0 40 24" aria-hidden="true">
+      <path class="gate__sat-arm" d="M12 12H15M25 12H28M20 6V2"/>
+      <rect class="gate__sat-panel" x="1" y="8" width="11" height="8" rx="1"/>
+      <rect class="gate__sat-panel" x="28" y="8" width="11" height="8" rx="1"/>
+      <path class="gate__sat-grid" d="M4.7 8V16M8.3 8V16M31.7 8V16M35.3 8V16M1 12H12M28 12H39"/>
+      <rect class="gate__sat-body" x="15" y="6" width="10" height="12" rx="2"/>
+      <circle class="gate__sat-light" cx="20" cy="2" r="1.8"/>
+    </svg>
+    <h2 class="gate__hello" id="gate-hello">
+      <span class="sr-only">Hi! I am Piyush.</span><span class="gate__typed" aria-hidden="true" data-type-plain="Hi! I am " data-type-accent="Piyush."></span><span class="gate__caret" aria-hidden="true"></span>
+    </h2>
+    <p class="gate__lines">
+      <span class="sr-only">Software Development Engineer. I build backends, keep ML models running, and write down the tradeoff.</span>
+      <span class="gate__line" aria-hidden="true" data-lines="Software Development Engineer.|I build backends.|I keep ML models running.|I write down the tradeoff."></span><span class="gate__caret gate__caret--line" aria-hidden="true"></span>
+    </p>
+    <div class="gate__actions">
+      <button class="btn-comet gate__enter" type="button" data-enter="sound" data-comet>
+        <span>Want to know more about me? <strong>Click here</strong></span>
+        <span class="btn-comet__arrow" aria-hidden="true">→</span>
+      </button>
+      <button class="gate__quiet" type="button" data-enter="quiet">or come in quietly, without sound</button>
+    </div>
+  </div>
+</div>
+
+<!-- quick links; keep in step with #contact. The resume opens in the browser's PDF viewer in a new tab. -->
+<nav class="dock" aria-label="Quick links">
+  <a class="pill-link pill-link--primary" href="assets/resume/resume.pdf" target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#icon-resume"/></svg><span class="dock__label">Resume ↗</span></a>
+  <a class="pill-link" href="mailto:kaslepiyush07@gmail.com" data-email><svg aria-hidden="true"><use href="#icon-email"/></svg><span class="dock__label">Email</span></a>
+  <a class="pill-link" href="https://github.com/HumbleFool02" target="_blank" rel="noopener"><svg class="brand-mark" aria-hidden="true"><use href="#icon-github"/></svg><span class="dock__label">GitHub</span></a>
+  <a class="pill-link" href="https://www.linkedin.com/in/piyush-kasle-504067292/" target="_blank" rel="noopener"><svg class="brand-mark" aria-hidden="true"><use href="#icon-linkedin"/></svg><span class="dock__label">LinkedIn</span></a>
+</nav>
+
+<div class="sky-hint" data-sky-hint aria-hidden="true">
+  <span class="tw"><svg width="9" height="9"><use href="#star"/></svg></span>Hold anywhere to bend the sky
+</div>
+
+<header class="site-header">
+  <div class="site-header__inner">
+    <a class="brand" href="#hero" aria-label="Piyush Kasle, back to top">PK<span class="tw"><svg width="10" height="10" aria-hidden="true"><use href="#star"/></svg></span></a>
+    <nav class="site-nav" aria-label="Sections">
+      <a href="#about"><svg width="8" height="8" aria-hidden="true"><use href="#star"/></svg>About</a>
+      <a href="#stack"><svg width="8" height="8" aria-hidden="true"><use href="#star"/></svg>Stack</a>
+      <a href="#projects"><svg width="8" height="8" aria-hidden="true"><use href="#star"/></svg>Projects</a>
+      <a href="#experience"><svg width="8" height="8" aria-hidden="true"><use href="#star"/></svg>Experience</a>
+      <a href="#contact"><svg width="8" height="8" aria-hidden="true"><use href="#star"/></svg>Contact</a>
+    </nav>
+  </div>
+</header>
+
+<main class="page">
+
+  <section id="hero" class="hero" aria-label="Introduction">
+    <a class="avail" href="#contact">
+      <span class="avail__star"><span class="avail__ring"></span><svg width="12" height="12" aria-hidden="true"><use href="#star"/></svg></span>
+      <span class="avail__status">Open to work</span>
+      <span class="avail__more">
+        <span class="avail__sep"></span>
+        <span>Backend · Full stack · ML infrastructure</span>
+        <span class="avail__sep"></span>
+        <span>Available to start immediately</span>
+      </span>
+    </a>
+    <div class="hero__coords">
+      <span class="tw"><svg width="11" height="11" aria-hidden="true"><use href="#star"/></svg></span>
+      <span>28.0836° N, 80.6081° W · Melbourne, Florida</span>
+      <span class="hero__dot" aria-hidden="true">·</span>
+      <span class="hero__lst" data-lst title="Local sidereal time at Melbourne, Florida: the right ascension crossing the meridian overhead right now"></span>
+    </div>
+    <h1 class="hero__name">Piyush<br>Kasle</h1>
+    <p class="hero__role">Software Development Engineer</p>
+    <!-- sun by day, moon by night: drawn on the canvas by assets/js/sunmoon.js -->
+    <div class="pk-orb-wrap" aria-hidden="true">
+      <div class="pk-orb-inner">
+        <canvas></canvas>
+        <div class="pk-orb-cap"></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="about" class="section">
+    <div class="section__grid">
+      <h2 class="section__label"><span class="tw"><svg width="9" height="9" aria-hidden="true"><use href="#star"/></svg></span>01 / About</h2>
+      <div class="about">
+        <p class="headline">The work around the model that <span class="shimmer">keeps it running.</span></p>
+        <p class="about__body">I'm a software engineer with a Master's in Software Engineering from Florida Tech and a year of backend experience at Acaira Technologies. I build APIs, databases and the infrastructure that keeps ML models running, and I care about tests, observability and clear tradeoffs.</p>
+        <p class="about__note">Available to start immediately.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="stack" class="section">
+    <div class="section__grid">
+      <h2 class="section__label"><span class="tw"><svg width="9" height="9" aria-hidden="true"><use href="#star"/></svg></span>02 / Stack</h2>
+      <div>
+        <p class="headline">From the API down to <span class="shimmer">the server it runs on.</span></p>
+        <div class="stack">
+          <div class="stack__row">
+            <h3 class="stack__label">Languages</h3>
+            <ul class="chips">
+              <li class="chip"><img src="https://cdn.simpleicons.org/python/d8d3c8" alt="" width="16" height="16" loading="lazy">Python</li>
+              <li class="chip"><img src="https://cdn.simpleicons.org/openjdk/d8d3c8" alt="" width="16" height="16" loading="lazy">Java</li>
+              <li class="chip"><img src="https://cdn.simpleicons.org/javascript/d8d3c8" alt="" width="16" height="16" loading="lazy">JavaScript</li>
+              <li class="chip"><img src="assets/icons/sql.svg" alt="" width="16" height="16">SQL</li>
+            </ul>
+          </div>
+          <div class="stack__row">
+            <h3 class="stack__label">Backend &amp; web</h3>
+            <ul class="chips">
+              <li class="chip"><img src="https://cdn.simpleicons.org/fastapi/d8d3c8" alt="" width="16" height="16" loading="lazy">FastAPI</li>
+              <li class="chip"><img src="https://cdn.simpleicons.org/flask/d8d3c8" alt="" width="16" height="16" loading="lazy">Flask</li>
+              <li class="chip"><img src="https://cdn.simpleicons.org/express/d8d3c8" alt="" width="16" height="16" loading="lazy">Express.js</li>
+              <li class="chip"><img src="https://cdn.simpleicons.org/nodedotjs/d8d3c8" alt="" width="16" height="16" loading="lazy">Node.js</li>
+              <li class="chip"><img src="https://cdn.simpleicons.org/react/d8d3c8" alt="" width="16" height="16" loading="lazy">React</li>
+            </ul>
+          </div>
+          <div class="stack__row">
+            <h3 class="stack__label">Databases &amp; caching</h3>
+            <ul class="chips">
+              <li class="chip"><img src="https://cdn.simpleicons.org/postgresql/d8d3c8" alt="" width="16" height="16" loading="lazy">PostgreSQL</li>
+              <li class="chip"><img src="https://cdn.simpleicons.org/mysql/d8d3c8" alt="" width="16" height="16" loading="lazy">MySQL</li>
+              <li class="chip"><img src="https://cdn.simpleicons.org/redis/d8d3c8" alt="" width="16" height="16" loading="lazy">Redis</li>
+            </ul>
+          </div>
+          <div class="stack__row">
+            <h3 class="stack__label">ML &amp; computer vision</h3>
+            <ul class="chips">
+              <li class="chip"><img src="https://cdn.simpleicons.org/pytorch/d8d3c8" alt="" width="16" height="16" loading="lazy">PyTorch</li>
+              <li class="chip"><img src="https://cdn.simpleicons.org/huggingface/d8d3c8" alt="" width="16" height="16" loading="lazy">Hugging Face</li>
+              <li class="chip"><img src="https://cdn.simpleicons.org/scikitlearn/d8d3c8" alt="" width="16" height="16" loading="lazy">scikit-learn</li>
+              <li class="chip"><img src="assets/icons/lightgbm.svg" alt="" width="16" height="16">LightGBM</li>
+              <li class="chip"><img src="https://cdn.simpleicons.org/pandas/d8d3c8" alt="" width="16" height="16" loading="lazy">pandas</li>
+              <li class="chip"><img src="https://cdn.simpleicons.org/opencv/d8d3c8" alt="" width="16" height="16" loading="lazy">OpenCV</li>
+              <li class="chip"><img src="https://cdn.simpleicons.org/ultralytics/d8d3c8" alt="" width="16" height="16" loading="lazy">YOLOv8</li>
+            </ul>
+          </div>
+          <div class="stack__row">
+            <h3 class="stack__label">Cloud &amp; DevOps</h3>
+            <ul class="chips">
+              <li class="chip"><img src="assets/icons/aws.svg" alt="" width="16" height="16">AWS EC2</li>
+              <li class="chip"><img src="assets/icons/aws.svg" alt="" width="16" height="16">AWS S3</li>
+              <li class="chip"><img src="https://cdn.simpleicons.org/docker/d8d3c8" alt="" width="16" height="16" loading="lazy">Docker</li>
+              <li class="chip"><img src="https://cdn.simpleicons.org/githubactions/d8d3c8" alt="" width="16" height="16" loading="lazy">GitHub Actions</li>
+              <li class="chip"><img src="https://cdn.simpleicons.org/linux/d8d3c8" alt="" width="16" height="16" loading="lazy">Linux</li>
+            </ul>
+          </div>
+          <div class="stack__row">
+            <h3 class="stack__label">APIs &amp; integrations</h3>
+            <ul class="chips">
+              <li class="chip"><img src="https://cdn.simpleicons.org/googlemeet/d8d3c8" alt="" width="16" height="16" loading="lazy">Google Meet API</li>
+              <li class="chip"><img src="https://cdn.simpleicons.org/mailgun/d8d3c8" alt="" width="16" height="16" loading="lazy">Mailgun</li>
+              <li class="chip"><img src="https://cdn.simpleicons.org/razorpay/d8d3c8" alt="" width="16" height="16" loading="lazy">Razorpay</li>
+              <li class="chip"><img src="https://cdn.simpleicons.org/jsonwebtokens/d8d3c8" alt="" width="16" height="16" loading="lazy">JWT</li>
+            </ul>
+          </div>
+          <div class="stack__row">
+            <h3 class="stack__label">Testing &amp; tools</h3>
+            <ul class="chips">
+              <li class="chip"><img src="https://cdn.simpleicons.org/pytest/d8d3c8" alt="" width="16" height="16" loading="lazy">pytest</li>
+              <li class="chip"><img src="https://cdn.simpleicons.org/postman/d8d3c8" alt="" width="16" height="16" loading="lazy">Postman</li>
+              <li class="chip"><img src="https://cdn.simpleicons.org/git/d8d3c8" alt="" width="16" height="16" loading="lazy">Git</li>
+              <li class="chip"><img src="https://cdn.simpleicons.org/streamlit/d8d3c8" alt="" width="16" height="16" loading="lazy">Streamlit</li>
+              <li class="chip"><img src="https://cdn.simpleicons.org/plotly/d8d3c8" alt="" width="16" height="16" loading="lazy">Plotly</li>
+            </ul>
+          </div>
+          <div class="stack__row">
+            <h3 class="stack__label">Embedded</h3>
+            <ul class="chips">
+              <li class="chip"><img src="https://cdn.simpleicons.org/cplusplus/d8d3c8" alt="" width="16" height="16" loading="lazy">C/C++</li>
+              <li class="chip"><img src="https://cdn.simpleicons.org/arduino/d8d3c8" alt="" width="16" height="16" loading="lazy">Arduino</li>
+              <li class="chip"><img src="https://cdn.simpleicons.org/stmicroelectronics/d8d3c8" alt="" width="16" height="16" loading="lazy">STM32</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="projects" class="section section--projects">
+    <!-- on wider screens the deck pins while you scroll and the cards ride in one by one (assets/js/project-deck.js) -->
+    <div class="pdeck" data-deck>
+      <div class="pdeck__stage">
+        <div class="section__grid">
+          <h2 class="section__label"><span class="tw"><svg width="9" height="9" aria-hidden="true"><use href="#star"/></svg></span>03 / Projects</h2>
+          <p class="headline">Built end to end, <span class="shimmer">tradeoffs written down.</span></p>
+        </div>
+        <!-- Each card opens its project's full write-up in a dialog below (assets/js/project-cards.js);
+           a link to #p-<name> opens that project directly. Covers are drawn in SVG; robocon gets a photo when there is one.
+           Every write-up uses the same skeleton: head, lede, tags, then optional detail blocks.
+           Anything in <span class="todo"> still needs real content. -->
+        <ul class="pcards">
+          <li>
+            <button class="pcard" type="button" data-opens="p-mental-health-mlops" aria-haspopup="dialog">
+              <span class="pcard__top"><span><span class="pcard__num">P1</span> · ML infrastructure</span><span class="pcard__go" aria-hidden="true">↗</span></span>
+              <svg class="pcard__art" viewBox="0 0 400 220" preserveAspectRatio="xMidYMid meet" aria-hidden="true">
+                <path class="a-grid" d="M20 30H380M20 80H380M20 130H380M20 180H380"/>
+                <path class="a-dash" d="M20 70H380"/>
+                <text class="a-label" x="22" y="62">8% alarm line</text>
+                <path class="a-ink" d="M20 158C60 152 84 164 120 156S180 150 220 158S300 152 380 156"/>
+                <path class="a-acc" d="M20 170C60 166 92 176 132 168S192 166 222 162C250 156 270 140 294 112S338 64 380 46"/>
+                <path class="a-dash" d="M318 20V200"/>
+                <use class="a-star" href="#star" x="309" y="61" width="18" height="18"/>
+                <text class="a-label" x="22" y="206">drift signal · model error</text>
+              </svg>
+              <span class="pcard__line">A drift monitor that stayed green while the model was wrong, and how I fixed it.</span>
+              <span class="pcard__foot"><span class="pcard__title">mental-health-mlops</span><span>81.9% F1 · 98 ms</span></span>
+            </button>
+          </li>
+          <li>
+            <button class="pcard" type="button" data-opens="p-security-shift-manager" aria-haspopup="dialog">
+              <span class="pcard__top"><span><span class="pcard__num">P2</span> · Backend</span><span class="pcard__go" aria-hidden="true">↗</span></span>
+              <svg class="pcard__art" viewBox="0 0 400 220" preserveAspectRatio="xMidYMid meet" aria-hidden="true">
+                <g class="a-label" text-anchor="middle"><text x="74" y="22">M</text><text x="116" y="22">T</text><text x="158" y="22">W</text><text x="200" y="22">T</text><text x="242" y="22">F</text><text x="284" y="22">S</text><text x="326" y="22">S</text></g>
+                <g class="a-fill">
+                  <rect x="57" y="32" width="34" height="34" rx="6"/><rect x="141" y="32" width="34" height="34" rx="6" opacity=".55"/><rect x="225" y="32" width="34" height="34" rx="6"/><rect x="309" y="32" width="34" height="34" rx="6" opacity=".55"/>
+                  <rect x="99" y="74" width="34" height="34" rx="6" opacity=".55"/><rect x="183" y="74" width="34" height="34" rx="6"/><rect x="309" y="74" width="34" height="34" rx="6"/>
+                  <rect x="57" y="116" width="34" height="34" rx="6" opacity=".55"/><rect x="141" y="116" width="34" height="34" rx="6"/><rect x="225" y="116" width="34" height="34" rx="6" opacity=".55"/>
+                </g>
+                <g class="a-soft">
+                  <rect x="99" y="32" width="34" height="34" rx="6"/><rect x="183" y="32" width="34" height="34" rx="6"/><rect x="267" y="32" width="34" height="34" rx="6"/>
+                  <rect x="57" y="74" width="34" height="34" rx="6"/><rect x="141" y="74" width="34" height="34" rx="6"/><rect x="225" y="74" width="34" height="34" rx="6"/>
+                  <rect x="99" y="116" width="34" height="34" rx="6"/><rect x="183" y="116" width="34" height="34" rx="6"/><rect x="309" y="116" width="34" height="34" rx="6"/>
+                </g>
+                <rect class="a-dash a-flag" x="267" y="74" width="34" height="34" rx="6"/>
+                <rect class="a-dash a-flag" x="267" y="116" width="34" height="34" rx="6"/>
+                <path class="a-ink" d="M84 196H316"/>
+                <g class="a-acc"><path d="M100 196V174M140 196V174M180 196V174M220 196V174M260 196V174M300 196V174"/></g>
+                <text class="a-label" x="22" y="214">duties this month, kept even</text>
+              </svg>
+              <span class="pcard__line">Fair rosters for a campus security team, with double booking ruled out by the database.</span>
+              <span class="pcard__foot"><span class="pcard__title">security-shift-manager</span><span>8 posts · 3 shifts</span></span>
+            </button>
+          </li>
+          <li>
+            <button class="pcard" type="button" data-opens="p-smart-parking-system" aria-haspopup="dialog">
+              <span class="pcard__top"><span><span class="pcard__num">P3</span> · Computer vision</span><span class="pcard__go" aria-hidden="true">↗</span></span>
+              <svg class="pcard__art" viewBox="0 0 400 220" preserveAspectRatio="xMidYMid meet" aria-hidden="true">
+                <path class="a-ink" d="M44 20H356M44 200H356M44 20V96M96 20V96M148 20V96M200 20V96M252 20V96M304 20V96M356 20V96M44 124V200M96 124V200M148 124V200M200 124V200M252 124V200M304 124V200M356 124V200"/>
+                <path class="a-dash" d="M44 110H356"/>
+                <g class="a-soft"><rect x="53" y="28" width="34" height="60" rx="8"/><rect x="157" y="28" width="34" height="60" rx="8"/><rect x="209" y="28" width="34" height="60" rx="8"/><rect x="313" y="28" width="34" height="60" rx="8"/><rect x="105" y="132" width="34" height="60" rx="8"/><rect x="157" y="132" width="34" height="60" rx="8"/><rect x="313" y="132" width="34" height="60" rx="8"/></g>
+                <g class="a-acc"><path d="M102 28h8M102 28v8M142 28h-8M142 28v8M102 88h8M102 88v-8M142 88h-8M142 88v-8"/><path d="M258 28h8M258 28v8M298 28h-8M298 28v8M258 88h8M258 88v-8M298 88h-8M298 88v-8"/><path d="M50 132h8M50 132v8M90 132h-8M90 132v8M50 192h8M50 192v-8M90 192h-8M90 192v-8"/></g>
+                <g class="a-ink"><circle cx="268" cy="172" r="7"/><circle cx="288" cy="172" r="7"/><path d="M268 172L276 158L288 172M276 158H284"/></g>
+                <rect class="a-dash a-flag" x="256" y="130" width="44" height="64" rx="4"/>
+                <text class="a-label" x="22" y="216">free slots found live · bike in a car space flagged</text>
+              </svg>
+              <span class="pcard__line">Live campus cameras that know which parking slots are free.</span>
+              <span class="pcard__foot"><span class="pcard__title">smart-parking-system</span><span>98% detection · 100 users</span></span>
+            </button>
+          </li>
+          <li>
+            <button class="pcard" type="button" data-opens="p-robocon" aria-haspopup="dialog">
+              <span class="pcard__top"><span><span class="pcard__num">P4</span> · Robotics competition</span><span class="pcard__go" aria-hidden="true">↗</span></span>
+              <svg class="pcard__art" viewBox="0 0 400 220" preserveAspectRatio="xMidYMid meet" aria-hidden="true">
+                <path class="a-ink" d="M20 196H380"/>
+                <path class="a-ink a-pole" d="M322 56V196"/>
+                <g class="a-ink"><ellipse cx="322" cy="188" rx="16" ry="4"/><ellipse cx="322" cy="180" rx="16" ry="4"/></g>
+                <path class="a-dash" d="M118 150Q226 -22 318 64"/>
+                <ellipse class="a-acc" cx="236" cy="38" rx="15" ry="5" transform="rotate(14 236 38)"/>
+                <rect class="a-soft" x="56" y="150" width="70" height="38" rx="6"/>
+                <g class="a-acc"><rect x="50" y="148" width="12" height="16" rx="2"/><rect x="120" y="148" width="12" height="16" rx="2"/><rect x="50" y="174" width="12" height="16" rx="2"/><rect x="120" y="174" width="12" height="16" rx="2"/></g>
+                <path class="a-ink" d="M52 152l8 8M52 160l8-8M122 152l8 8M122 160l8-8M52 178l8 8M52 186l8-8M122 178l8 8M122 186l8-8"/>
+                <use class="a-star" href="#star" x="226" y="2" width="14" height="14"/>
+                <text class="a-label" x="22" y="216">ring throw to a pole about 10.5 m away</text>
+              </svg>
+              <span class="pcard__line">Two seasons of competition robots, from drive code to driving in matches.</span>
+              <span class="pcard__foot"><span class="pcard__title">robocon</span><span>AIR 21 · AIR 23</span></span>
+            </button>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+        <div class="project-dialogs">
+
+          <dialog class="pdialog" id="dialog-p-mental-health-mlops" aria-labelledby="p-mental-health-mlops-title">
+            <button class="pdialog__close" type="button" aria-label="Close" data-close>×</button>
+            <div class="pdialog__panel">
+          <article class="project" id="p-mental-health-mlops">
+            <header class="project__head">
+              <span class="project__num">P1</span>
+              <h3 class="project__title" id="p-mental-health-mlops-title">mental-health-mlops</h3>
+              <ul class="project__links">
+                <li><a class="link" href="https://github.com/HumbleFool02/mental-health-mlops" target="_blank" rel="noopener">code ↗</a></li>
+              </ul>
+              <p class="project__meta"><span class="badge">Case study</span><span>Fall 2025</span><span>Master's capstone</span></p>
+            </header>
+            <p class="project__lede">The ML side of a university health center's student check in app, built in my advisor's lab as my Master's capstone while the app was live with students. A fine tuned DistilBERT model sorts each message into one of six categories and is served by FastAPI on AWS EC2. Every message, prediction and confidence score is logged to PostgreSQL, a three tier drift monitor watches the inputs, and GitHub Actions tests, builds and deploys it.</p>
+            <ul class="tags">
+              <li class="tag">DistilBERT</li>
+              <li class="tag">FastAPI</li>
+              <li class="tag">PostgreSQL</li>
+              <li class="tag">Docker</li>
+              <li class="tag">AWS EC2 + S3</li>
+              <li class="tag">GitHub Actions</li>
+              <li class="tag">Streamlit</li>
+            </ul>
+
+            <dl class="metrics">
+              <div class="metric"><dt>F1 across 6 categories</dt><dd>81.9%</dd></div>
+              <div class="metric"><dt>recall, highest risk class</dt><dd>74.1%</dd></div>
+              <div class="metric"><dt>inference latency</dt><dd>98 ms</dd></div>
+              <div class="metric"><dt>hosting, AWS Free Tier</dt><dd>$0/mo</dd></div>
+            </dl>
+
+            <div class="decisions">
+              <h4 class="eyebrow">Decision log</h4>
+              <details class="decision" open>
+                <summary>
+                  <span class="decision__title"><span class="decision__num">D1</span>DistilBERT, after the simple baselines</span>
+                  <span class="decision__sign" aria-hidden="true"></span>
+                </summary>
+                <div class="decision__body">
+                  <p>I benchmarked Logistic Regression, Random Forest, LightGBM and LightGBM with SMOTE before reaching for a transformer. SMOTE resampling didn't help and class weighting worked better, but the simple models still weren't enough. Among transformers I picked DistilBERT for deployability: about 40% smaller and 60% faster than BERT while keeping about 97% of its performance.</p>
+                  <div class="decision__tags">
+                    <span class="pill pill--accent">chose · DistilBERT</span>
+                    <span class="pill pill--outline">over · BERT and classic baselines</span>
+                  </div>
+                </div>
+              </details>
+              <details class="decision">
+                <summary>
+                  <span class="decision__title"><span class="decision__num">D2</span>t3.small, not a micro instance</span>
+                  <span class="decision__sign" aria-hidden="true"></span>
+                </summary>
+                <div class="decision__body">
+                  <p>The model, the FastAPI service and the Streamlit dashboard need about 2 GB of RAM together, more than a micro instance has. t3.small is the smallest that fits, and the deployment still costs $0 a month on the AWS Free Tier. The model lives in S3 and is pulled in at Docker build time instead of sitting in git.</p>
+                  <div class="decision__tags">
+                    <span class="pill pill--accent">chose · t3.small</span>
+                    <span class="pill pill--outline">over · t2.micro class</span>
+                  </div>
+                </div>
+              </details>
+              <details class="decision">
+                <summary>
+                  <span class="decision__title"><span class="decision__num">D3</span>A bigger labeled batch before retraining</span>
+                  <span class="decision__sign" aria-hidden="true"></span>
+                </summary>
+                <div class="decision__body">
+                  <p>After the counselor's corrections, retraining on a dozen examples would have been quick and mostly noise. I asked her to label a larger batch from the app's logs instead, to use both for retraining and for testing the new drift signals.</p>
+                  <div class="decision__tags">
+                    <span class="pill pill--accent">chose · larger labeled batch</span>
+                    <span class="pill pill--outline">over · retraining on 12 corrections</span>
+                  </div>
+                </div>
+              </details>
+            </div>
+
+            <aside class="callout">
+              <span class="callout__label">What the monitor missed</span>
+              <p>For three weeks the monitor stayed green while the model read some struggling students' messages as normal. The lead counselor caught it: 12 confident errors in 40 excerpts. The cause was rising slang, which none of my checks read; swapping only the slang fixed 9 of the 12. I added two language aware signals at the same 8% false alarm rate, a simulator test that fails if injected slang goes undetected, and a counselor review every two weeks. Replayed, the upgraded monitor would have alerted nine days earlier.</p>
+            </aside>
+          </article>
+            </div>
+          </dialog>
+
+          <dialog class="pdialog" id="dialog-p-security-shift-manager" aria-labelledby="p-security-shift-manager-title">
+            <button class="pdialog__close" type="button" aria-label="Close" data-close>×</button>
+            <div class="pdialog__panel">
+          <article class="project" id="p-security-shift-manager">
+            <header class="project__head">
+              <span class="project__num">P2</span>
+              <h3 class="project__title" id="p-security-shift-manager-title">security-shift-manager</h3>
+              <ul class="project__links">
+                <li><a class="link" href="https://github.com/HumbleFool02/security-shift-manager" target="_blank" rel="noopener">code ↗</a></li>
+              </ul>
+              <p class="project__meta"><span>Fall 2024</span><span>Solo project</span><span>rebuilt from coursework</span></p>
+            </header>
+            <p class="project__lede">A three role Flask web app for scheduling and running a campus security team. Managers build and publish weekly rosters across 8 patrol locations and 3 shifts, guards see their duties and request leave or overtime, and an admin sets the pay rules behind payroll.</p>
+            <ul class="tags">
+              <li class="tag">Flask</li>
+              <li class="tag">SQLAlchemy</li>
+              <li class="tag">MySQL</li>
+              <li class="tag">PyJWT</li>
+              <li class="tag">Jinja2</li>
+              <li class="tag">Bootstrap</li>
+            </ul>
+            <ul class="highlights">
+              <li><strong>Fair rosters by design.</strong> Each slot goes to the guard with the fewest duties this month, approved leave is respected, nobody gets two duties in a day, and a slot that can't be filled is recorded as uncovered instead of quietly producing an invalid roster.</li>
+              <li><strong>Leave cancellation with an authority boundary.</strong> A pending request cancels at once; an approved one goes back to the manager for a second decision, tracked as its own flag so the leave still reads Approved until it's settled.</li>
+              <li><strong>Double booking ruled out by the database.</strong> A composite unique key on duty, date and shift, with any clash shown as a clear message instead of a server error.</li>
+              <li><strong>Payroll from the month's duties.</strong> Regular, night and overtime pay plus bonus, minus leave fines, regenerated in place rather than duplicated and released only after the month ends.</li>
+            </ul>
+          </article>
+            </div>
+          </dialog>
+
+          <dialog class="pdialog" id="dialog-p-smart-parking-system" aria-labelledby="p-smart-parking-system-title">
+            <button class="pdialog__close" type="button" aria-label="Close" data-close>×</button>
+            <div class="pdialog__panel">
+          <article class="project" id="p-smart-parking-system">
+            <header class="project__head">
+              <span class="project__num">P3</span>
+              <h3 class="project__title" id="p-smart-parking-system-title">smart-parking-system</h3>
+              <ul class="project__links">
+                <li><a class="link" href="https://github.com/HumbleFool02/Parking-Management-Sytem" target="_blank" rel="noopener">code ↗</a></li>
+              </ul>
+              <p class="project__meta"><span>Jun 2023 to May 2024</span><span>Final year project</span><span>team of 2</span></p>
+            </header>
+            <p class="project__lede">My undergraduate final year project, built with one teammate; I led the backend and the computer vision. A YOLOv8 and OpenCV service watches the live campus surveillance feed and tracks which slots are free in real time, even flagging a motorbike or bicycle parked in a car space. A separate Flask API runs accounts, vehicles and bookings by vehicle type, with JWT auth and Razorpay payments.</p>
+            <ul class="tags">
+              <li class="tag">YOLOv8</li>
+              <li class="tag">OpenCV</li>
+              <li class="tag">Flask</li>
+              <li class="tag">PostgreSQL</li>
+              <li class="tag">JWT</li>
+              <li class="tag">Razorpay</li>
+            </ul>
+            <dl class="metrics">
+              <div class="metric"><dt>slot detection accuracy</dt><dd>98%</dd></div>
+              <div class="metric"><dt>concurrent users, load test</dt><dd>100</dd></div>
+              <div class="metric"><dt>response time at that load</dt><dd>&lt;200 ms</dd></div>
+            </dl>
+            <ul class="highlights">
+              <li><strong>No double bookings.</strong> PostgreSQL row level locking on the slot being booked.</li>
+              <li><strong>Validated in stages.</strong> Recorded footage first, then live against the real campus feed in the parking lot.</li>
+              <li><strong>Two independent processes.</strong> The detection service and the booking API run separately.</li>
+            </ul>
+          </article>
+            </div>
+          </dialog>
+
+          <dialog class="pdialog" id="dialog-p-robocon" aria-labelledby="p-robocon-title">
+            <button class="pdialog__close" type="button" aria-label="Close" data-close>×</button>
+            <div class="pdialog__panel">
+          <article class="project" id="p-robocon">
+            <header class="project__head">
+              <span class="project__num">P4</span>
+              <h3 class="project__title" id="p-robocon-title">robocon</h3>
+              <ul class="project__links">
+                <li><span class="todo">video ↗</span></li>
+              </ul>
+              <p class="project__meta"><span class="badge">Competition</span><span>Dec 2021 to May 2023</span><span>Team Robocon CRCE</span></p>
+            </header>
+            <p class="project__lede">Two seasons on Team Robocon CRCE, my college's team in DD Robocon, India's national round of ABU Robocon. I went from writing the drive code to leading the computer science side and driving the robot in matches.</p>
+            <ul class="tags">
+              <li class="tag">embedded C++</li>
+              <li class="tag">Arduino</li>
+              <li class="tag">STM32</li>
+              <li class="tag">PCB design</li>
+              <li class="tag">holonomic drive</li>
+            </ul>
+            <dl class="metrics">
+              <div class="metric"><dt>All India Rank, 2022</dt><dd>AIR 21</dd></div>
+              <div class="metric"><dt>All India Rank, 2023</dt><dd>AIR 23</dd></div>
+              <div class="metric"><dt>integration, down from 1.5 days</dt><dd>~5 h</dd></div>
+            </dl>
+            <div class="seasons">
+              <div class="season">
+                <p class="season__year">2022 · Lagori</p>
+                <h4 class="season__role">Software lead</h4>
+                <ul class="highlights highlights--compact">
+                  <li>Owned the drive code for both robots and led software: me and three first year students, six weeks before the qualifying round.</li>
+                  <li>Made every subsystem a plug in unit (mechanism, electronics, C++ module and self test) that had to pass a bench rig before going on a robot. Integration fell from about a day and a half to about 5 hours.</li>
+                  <li>Worked across electronics and mechanical too: soldering, PCB design and wiring. Pit crew at the event.</li>
+                </ul>
+              </div>
+              <div class="season">
+                <p class="season__year">2023 · Casting flowers over Angkor Wat</p>
+                <h4 class="season__role">Computer Science Head</h4>
+                <ul class="highlights highlights--compact">
+                  <li>Led the computer science side: circuit design, the drive algorithm and the robot control code.</li>
+                  <li>Drove in matches. That season's robots: a 30 kg Mecanum drive robot with flywheel shooters for poles up to about 10.5 m away, and a lighter omni wheel robot for the nearer, higher poles.</li>
+                  <li>Designed Obstacle Race, the team's recruitment competition: the game, the scoring, the penalties and the arena.</li>
+                </ul>
+              </div>
+            </div>
+            <!-- photos go in assets/img/; replace a placeholder with
+                 <figure class="media"><img src="assets/img/robocon-1.jpg" alt="…" loading="lazy"><figcaption>…</figcaption></figure> -->
+            <div class="gallery">
+              <figure class="media media--placeholder"><span class="todo">photo of you at the competition</span></figure>
+              <figure class="media media--placeholder"><span class="todo">photo (optional)</span></figure>
+              <figure class="media media--placeholder"><span class="todo">photo (optional)</span></figure>
+            </div>
+          </article>
+            </div>
+          </dialog>
+
+        </div>
+  </section>
+
+  <section id="experience" class="section section--experience">
+    <div class="section__grid">
+      <h2 class="section__label"><span class="tw"><svg width="9" height="9" aria-hidden="true"><use href="#star"/></svg></span>04 / Experience</h2>
+      <div>
+        <p class="headline">From Mumbai to <span class="shimmer">Melbourne, Florida.</span></p>
+        <div class="timeline" data-timeline>
+          <div class="timeline__rail" aria-hidden="true"></div>
+          <div class="timeline__fill" aria-hidden="true"></div>
+          <ol class="timeline__list">
+            <li class="timeline__item">
+              <span class="timeline__star" aria-hidden="true"><span class="timeline__ring"></span><svg><use href="#star"/></svg></span>
+              <div class="timeline__body">
+                <div class="timeline__head">
+                  <div class="timeline__meta">
+                    <span class="timeline__dates">Jul 2020 to May 2024</span>
+                    <span class="timeline__place">Mumbai, India</span>
+                  </div>
+                  <h3 class="timeline__role">B.E., Electronics and Computer Science</h3>
+                  <div class="timeline__org">University of Mumbai · Fr. Conceicao Rodrigues College of Engineering</div>
+                </div>
+                <p class="timeline__note">Where I spent two seasons on Team Robocon CRCE and built the smart parking system as my final year project.</p>
+              </div>
+            </li>
+            <li class="timeline__item">
+              <span class="timeline__star" aria-hidden="true"><span class="timeline__ring"></span><svg><use href="#star"/></svg></span>
+              <div class="timeline__body">
+                <div class="timeline__head">
+                  <div class="timeline__meta">
+                    <span class="timeline__dates">Jun 2023 to May 2024</span>
+                    <span class="timeline__place">Mumbai, India</span>
+                  </div>
+                  <h3 class="timeline__role">Software Developer</h3>
+                  <div class="timeline__org">Acaira Technologies · Mumbai startup</div>
+                </div>
+                <p class="timeline__note">Backend for a school app serving about 1,100 students that had run on paper registers, WhatsApp groups and Excel. Express.js, MySQL, React and Redis.</p>
+                <ul class="timeline__points">
+                  <li>Built the fee module backend, then proposed and built automatic receipts: PDFs in the school's format with gapless numbering, emailed from an idempotent queue, 4,300+ receipts and notices a year.</li>
+                  <li>Added cheque tracking so a receipt only issues after a cheque clears: about 15 bounced cheques caught with zero receipts sent for them, and cheque handling cut by about 40%.</li>
+                  <li>Took attendance straight from Google Meet, marking a student present at 75% of class time, which ended roll call and gave teachers back 5+ hours a week.</li>
+                  <li>Cut the 12 KPI analytics dashboard from 3.2 s to 180 ms median with query rewrites, a covering index and Redis caching.</li>
+                </ul>
+              </div>
+            </li>
+            <li class="timeline__item">
+              <span class="timeline__star" aria-hidden="true"><span class="timeline__ring"></span><svg><use href="#star"/></svg></span>
+              <div class="timeline__body">
+                <div class="timeline__head">
+                  <div class="timeline__meta">
+                    <span class="timeline__dates">Aug 2024 to May 2026</span>
+                    <span class="timeline__place">Melbourne, Florida</span>
+                  </div>
+                  <h3 class="timeline__role">MS, Software Engineering</h3>
+                  <div class="timeline__org">Florida Institute of Technology</div>
+                </div>
+                <p class="timeline__note">Graduated May 2026. Capstone: the MLOps pipeline above, built for the university health center. Coursework included Advanced Software Engineering, Advanced Software Testing, Software Architecture and Design, and Advanced Database Systems.</p>
+              </div>
+            </li>
+            <li class="timeline__item">
+              <span class="timeline__star" aria-hidden="true"><span class="timeline__ring"></span><svg><use href="#star"/></svg></span>
+              <div class="timeline__body">
+                <div class="timeline__head">
+                  <div class="timeline__meta">
+                    <span class="timeline__dates">Spring 2026</span>
+                    <span class="timeline__place">Melbourne, Florida</span>
+                  </div>
+                  <h3 class="timeline__role">Teaching Assistant, Database Systems</h3>
+                  <div class="timeline__org">Florida Institute of Technology</div>
+                </div>
+                <p class="timeline__note">A graduate course of about 28 students. Graded assignments and exams with written feedback aimed at the specific mistake, helped refine how the rubrics scored partial credit and common errors, and held weekly office hours.</p>
+              </div>
+            </li>
+          </ol>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact" class="section section--contact">
+    <div class="section__grid">
+      <h2 class="section__label"><span class="tw"><svg width="9" height="9" aria-hidden="true"><use href="#star"/></svg></span>05 / Contact</h2>
+      <div class="contact">
+        <p class="contact__lede">Open to new grad software engineering roles in backend, full stack and ML infrastructure. Available to start immediately.</p>
+        <!-- keep in step with the dock at the top of <body> -->
+        <ul class="contact__links">
+          <li><a class="pill-link" href="mailto:kaslepiyush07@gmail.com" data-email><svg aria-hidden="true"><use href="#icon-email"/></svg>Email</a></li>
+          <li><a class="pill-link" href="https://github.com/HumbleFool02" target="_blank" rel="noopener"><svg class="brand-mark" aria-hidden="true"><use href="#icon-github"/></svg>GitHub</a></li>
+          <li><a class="pill-link" href="https://www.linkedin.com/in/piyush-kasle-504067292/" target="_blank" rel="noopener"><svg class="brand-mark" aria-hidden="true"><use href="#icon-linkedin"/></svg>LinkedIn</a></li>
+          <li><a class="btn-comet" href="assets/resume/resume.pdf" target="_blank" rel="noopener" data-comet><svg class="btn-comet__icon" aria-hidden="true"><use href="#icon-resume"/></svg><span>Resume</span><span class="btn-comet__arrow" aria-hidden="true">↗</span></a></li>
+        </ul>
+      </div>
+    </div>
+    <footer class="site-footer">
+      <span>© <span data-year>2026</span> Piyush Kasle</span>
+      <span class="made">Made with <svg class="made__heart" width="13" height="13" aria-hidden="true"><use href="#heart"/></svg><span class="sr-only">love</span> and <img class="made__claude" src="https://cdn.simpleicons.org/claude" alt="Claude" title="Claude" width="14" height="14"></span>
+      <button type="button" class="replay" data-replay-intro>↻ replay warp, with sound</button>
+    </footer>
+  </section>
+
+</main>
+
+<!-- the note shown after clicking an email link (assets/js/email-links.js) -->
+<div class="toast" data-toast role="status" aria-live="polite" hidden></div>
+
+<!-- the cursor: a little spacecraft, nose on the hotspot (assets/js/ship-cursor.js) -->
+<div class="ship" data-ship popover="manual" aria-hidden="true">
+  <canvas class="ship__hole" data-ship-hole width="200" height="200"></canvas>
+  <div class="ship__craft" data-ship-craft>
+    <span class="ship__ring"></span>
+    <svg class="ship__body" viewBox="-20 0 60 24" width="48" height="19.2" focusable="false">
+      <defs>
+        <linearGradient id="ship-flame" x1="1" y1="0" x2="0" y2="0">
+          <stop offset="0" stop-color="#fff3e6"/>
+          <stop offset=".3" stop-color="#f6a06b"/>
+          <stop offset="1" stop-color="#f6a06b" stop-opacity="0"/>
+        </linearGradient>
+        <linearGradient id="ship-hull" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0" stop-color="#ffffff"/>
+          <stop offset=".55" stop-color="#ece9e3"/>
+          <stop offset="1" stop-color="#a9a49b"/>
+        </linearGradient>
+      </defs>
+      <g class="ship__flame">
+        <path d="M7 8.8C0 9.6-11 11-19 12C-11 13 0 14.4 7 15.2Z" fill="url(#ship-flame)"/>
+        <path d="M7 10.2C2 10.8-4 11.6-8 12C-4 12.4 2 13.2 7 13.8Z" fill="#fff" opacity=".85"/>
+      </g>
+      <rect x="5.6" y="9" width="2.8" height="6" rx="1" fill="#6c7389"/>
+      <path d="M25 7L15.5.9C13.6-.1 11.4.4 11 1.8L13.4 7Z" fill="#f6a06b"/>
+      <path d="M25 17L15.5 23.1C13.6 24.1 11.4 23.6 11 22.2L13.4 17Z" fill="#d9844f"/>
+      <path d="M40 12C36 7.4 27 5.8 15 6.4C11 6.6 8.6 8 8 9.4V14.6C8.6 16 11 17.4 15 17.6C27 18.2 36 16.6 40 12Z" fill="url(#ship-hull)"/>
+      <path d="M13 13.6C20 14.1 27 14.1 34 13.5" fill="none" stroke="#f6a06b" stroke-width=".9" stroke-linecap="round"/>
+      <ellipse cx="30" cy="10.9" rx="4.4" ry="2.2" fill="#0c1530" stroke="#f6a06b" stroke-width=".8"/>
+      <ellipse cx="31.4" cy="10.2" rx="1.4" ry=".6" fill="#fff" opacity=".7"/>
+    </svg>
+  </div>
+</div>
+</body>
+</html>
