@@ -8,6 +8,7 @@ import { attachPageBend } from './page-bend.js';
 import { startProjectCards } from './project-cards.js';
 import { startProjectDeck } from './project-deck.js';
 import { playWarpSound } from './warp-sound.js';
+import { attachHoleSound } from './hole-sound.js';
 import { startEmailLinks } from './email-links.js';
 import { startEnterGate } from './enter-gate.js';
 import { startShipCursor } from './ship-cursor.js';
@@ -20,7 +21,7 @@ const gated = root.hasAttribute('data-pk-gate');  // the Enter screen is up: the
 
 // night sky
 const canvas = document.querySelector('[data-sky]');
-let sky = null;
+let sky = null, hole = { setSound() {} };
 if (canvas) {
   sky = createSky(canvas, {
     hint: document.querySelector('[data-sky-hint]'),
@@ -35,8 +36,10 @@ if (canvas) {
     .catch((err) => console.warn('Night sky: constellations unavailable, showing dust only.', err));
   // the page's text and cards feel the gravity well too, like the stars
   attachPageBend(sky);
+  // and it can be heard: NASA's sonification of the black hole in the Perseus cluster, while you hold
+  hole = attachHoleSound(sky);
   // replaying the warp is a click, so the browser lets it play sound
-  document.querySelector('[data-replay-intro]')?.addEventListener('click', () => { playWarpSound(); sky.replayIntro(); });
+  document.querySelector('[data-replay-intro]')?.addEventListener('click', () => { hole.setSound(true); playWarpSound(); sky.replayIntro(); });
 }
 
 // the cursor is a little spacecraft; holding on the sky, it falls into the black hole
@@ -46,6 +49,7 @@ startShipCursor({ sky });
 if (gated) {
   startEnterGate({
     onEnter: (withSound) => {
+      hole.setSound(withSound);
       if (withSound) playWarpSound();
       if (sky) sky.replayIntro(); else root.removeAttribute('data-pk-intro');
     },

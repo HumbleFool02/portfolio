@@ -26,6 +26,8 @@ assets/js/intro-gate.js runs before first paint: hides the page for the warp, sh
 assets/js/enter-gate.js the Enter screen: its click starts the warp, with sound if chosen
 assets/js/main.js       entry point that wires up each piece below
 assets/js/sky.js        canvas sky: constellations, dust, cursor, gravity well, meteors, warp intro
+assets/js/page-bend.js  the page's words and cards lean into the gravity well, one word at a time
+assets/js/ship-cursor.js the spacecraft cursor, which falls into the black hole while you hold
 assets/js/timeline.js   Experience section: the line fills and each stop lights as you scroll
 assets/js/sidereal.js   local sidereal time clock in the hero
 assets/js/comet.js      the comet that circles the hero button's edge
@@ -34,9 +36,11 @@ assets/js/gravity-bend.js  lets the sun or moon lean into the gravity well and r
 assets/js/project-cards.js opens each project card's write-up in a dialog
 assets/js/project-deck.js  pins Projects on wider screens while the cards ride in one by one
 assets/js/warp-sound.js the warp's sound, made with Web Audio (no audio files)
+assets/js/hole-sound.js the black hole's sound while you hold: NASA's Perseus cluster sonification
 assets/js/email-links.js email links copy the address and offer Gmail or the mail app
 assets/resume/          the resume PDF; links open it in the browser's viewer, in a new tab
 assets/icons/           favicon (SVG, 32px PNG, apple-touch-icon) and the text-badge stack icons
+assets/audio/           the black hole's sound, a 20 s seamless loop (AAC, 111 KB)
 data/sky.json           constellation data, generated (don't edit by hand)
 scripts/constellations.py
 scripts/build.sh        copies just the site into dist/ for publishing
@@ -72,6 +76,20 @@ shows an Enter screen: "Enter" starts the warp with sound, "enter without sound"
 silently. It appears once per browser session, and never for links straight to a section or project
 (`#contact`, `#p-robocon`), which open on their content. Reduced motion skips the warp and the screen.
 "↻ replay warp, with sound" in the footer plays it again.
+
+## The black hole's sound
+
+Holding the mouse on the page plays NASA's sonification of the black hole at the centre of the Perseus
+galaxy cluster: pressure waves in the cluster's hot gas, raised 57 and 58 octaves so they can be heard
+([Chandra X-ray Center, 2022](https://chandra.si.edu/sound/perseus.html)). The sound fades in once the hole has been held for a
+moment (an ordinary click stays quiet), grows louder and lower as it charges, pans to follow the hole,
+and falls away with a low thump when you let go. Visitors who came in without sound don't hear it, and
+the "replay warp, with sound" button turns it back on.
+
+`assets/audio/perseus-black-hole.m4a` is cut from NASA's `perseus_sonification.mp4`: the first 22 s,
+with the last 2 s blended into the start so it loops without a seam, then encoded as 48 kbps AAC.
+Chandra asserts no copyright over it and asks for credit, which is in the footer:
+NASA/CXC/SAO/K. Arcand, SYSTEM Sounds (M. Russo, A. Santaguida).
 
 ## Sun and moon
 

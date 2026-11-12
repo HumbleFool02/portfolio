@@ -602,6 +602,10 @@ html:has(.pdialog[open]) { overflow: hidden; }
   margin-top: 70px; padding-top: 22px; border-top: 1px solid rgba(var(--pk-ink-rgb), .08);
   font-family: var(--font-mono); font-size: 11px; color: rgba(var(--pk-ink-rgb), .56);
 }
+/* NASA's credit for the black hole's sound (assets/js/hole-sound.js), on a line of its own */
+.credit { flex-basis: 100%; color: rgba(var(--pk-ink-rgb), .4); }
+.credit a { color: inherit; text-decoration: underline; text-decoration-color: rgba(var(--pk-ink-rgb), .2); text-underline-offset: 3px; }
+.credit a:hover, .credit a:focus-visible { color: var(--pk-accent); text-decoration-color: currentColor; }
 /* "Made with ♥ and Claude": the heart beats when you point at the line */
 .made { display: inline-flex; align-items: center; gap: 6px; }
 .made__heart { color: var(--pk-accent); }
@@ -907,7 +911,7 @@ html:not(.js) .sky-hint { display: none; }
   html { scroll-behavior: auto; }
   .tw, .avail__ring, .shimmer, .headline, .decision__body, .timeline__star svg, .timeline__ring { animation: none !important; }
   .timeline__body, .timeline__fill { transition: none; }
-  .sky-hint, .replay { display: none; }  /* no gravity well or warp intro */
+  .sky-hint, .replay, .credit { display: none; }  /* no gravity well or warp intro, so no black hole sound either */
   .comet { display: none; }  /* the outline pill stays, without the orbit */
   .pcard, .pcard__go { transition: none; }
   .toast { transition: none; }
