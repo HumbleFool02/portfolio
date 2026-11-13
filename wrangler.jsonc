@@ -1,0 +1,10 @@
+{
+  // Cloudflare Workers static assets: publishes the folder scripts/build.sh builds, with no Worker code.
+  // _headers and 404.html inside dist/ are picked up from there.
+  "name": "portfolio",
+  "compatibility_date": "2026-11-13",
+  "assets": {
+    "directory": "./dist",
+    "not_found_handling": "404-page"
+  }
+}
