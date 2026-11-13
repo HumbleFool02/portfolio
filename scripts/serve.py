@@ -30,7 +30,7 @@ def read_header_rules(path):
 
     A rule is a path on its own line, then its headers indented below it: `Name: value`, or `! Name` to drop
     one set by an earlier rule. `*` matches anything, `:name` one path segment. Rules for absolute URLs
-    (another host, such as the pages.dev address) don't apply here and are skipped."""
+    (another host, such as the workers.dev address) don't apply here and are skipped."""
     rules = []
     if not path.is_file():
         return rules

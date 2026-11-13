@@ -1,4 +1,4 @@
-# Response headers for every file the site serves. Cloudflare Pages reads this file from the published folder,
+# Response headers for every file the site serves. Cloudflare reads this file from the published folder,
 # and scripts/serve.py sends the same headers locally, so a policy problem shows up before it's deployed.
 # This is the only place the security policy lives: the pages carry no <meta> copy of it.
 #
@@ -28,6 +28,6 @@
 /assets/fonts/*
   Cache-Control: public, max-age=31536000, immutable
 
-# the project's pages.dev address stays reachable, but only the custom domain should be in search results
-https://:project.pages.dev/*
+# the workers.dev address stays reachable, but only the custom domain should be in search results
+https://portfolio.kaslepiyush07.workers.dev/*
   X-Robots-Tag: noindex

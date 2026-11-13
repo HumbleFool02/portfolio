@@ -1,10 +1,16 @@
+// Cloudflare Workers settings for the site. It's static files only, with no Worker code: Cloudflare runs the
+// build command (sh scripts/build.sh), then the deploy command (npx wrangler deploy), which uploads dist/ and
+// reads _headers from it. Not published itself: build.sh copies only the site into dist/.
 {
-  // Cloudflare Workers static assets: publishes the folder scripts/build.sh builds, with no Worker code.
-  // _headers and 404.html inside dist/ are picked up from there.
-  "name": "portfolio",
+  "name": "portfolio",  // must match the Worker's name in the Cloudflare dashboard
   "compatibility_date": "2026-11-13",
   "assets": {
     "directory": "./dist",
+    // a missing page gets 404.html with a 404 status
     "not_found_handling": "404-page"
-  }
+  },
+  // the portfolio.<account>.workers.dev address stays up (_headers keeps it out of search results)
+  "workers_dev": true,
+  // no extra public address for every uploaded version
+  "preview_urls": false
 }

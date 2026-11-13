@@ -54,6 +54,7 @@ scripts/constellations.py
 scripts/build.sh        copies just the site into dist/ for publishing
 scripts/serve.py        local dev server
 404.html, _headers      the not-found page and the security headers (published with the site; see Security)
+wrangler.jsonc          Cloudflare Workers settings: which folder to upload, the 404 page, which addresses
 .well-known/security.txt  how to report a security problem (RFC 9116); renew its Expires date yearly
 ```
 
@@ -141,7 +142,7 @@ Cloudflare sends them with every file, and `scripts/serve.py` sends the same one
 - **Cross-origin isolation of the window and files**: `Cross-Origin-Opener-Policy` and
   `Cross-Origin-Resource-Policy` are both `same-origin`.
 - **The resume PDF** (`/assets/resume/*`) is sent with `X-Robots-Tag: noindex`, so search engines don't
-  list it and its phone number. The `pages.dev` address is noindexed too, so only the custom domain is
+  list it and its phone number. The `workers.dev` address is noindexed too, so only the custom domain is
   listed.
 - Only `dist/` is published (see Deploy), so the README, `scripts/`, `.claude/` and `.vscode/` stay local.
 - `scripts/serve.py` listens on this machine only and refuses hidden paths such as `/.git/`.
@@ -149,23 +150,30 @@ Cloudflare sends them with every file, and `scripts/serve.py` sends the same one
 To check the policy after a change, run `sh scripts/build.sh`, then `python3 scripts/serve.py --root dist`,
 go through the page with the browser console open, and look for "Refused to" messages.
 
-## Deploy (Cloudflare Pages)
+## Deploy (Cloudflare Workers)
 
-Free, with no bandwidth cap, and it redeploys on every push to `main`. `dist/` holds only `index.html`,
-`404.html`, `_headers`, `.well-known/`, `assets/` and `data/`, so the README, scripts and editor settings
-are never published. To check a build locally: `sh scripts/build.sh` then `python3 scripts/serve.py --root dist`.
+The site runs as a Cloudflare Worker with static files only (no Worker code): free, and it redeploys on
+every push to `main`. Cloudflare runs `sh scripts/build.sh`, then `npx wrangler deploy`, which uploads
+`dist/` as `wrangler.jsonc` says and reads `_headers` from it. `dist/` holds only `index.html`, `404.html`,
+`_headers`, `.well-known/`, `assets/` and `data/`, so the README, scripts and editor settings are never
+published. To check a build locally: `sh scripts/build.sh` then `python3 scripts/serve.py --root dist`.
+
+Live now at <https://portfolio.kaslepiyush07.workers.dev> (kept out of search results until the custom
+domain takes over).
 
 First time setup, in this order:
 
 1. **Accounts**: turn on two factor sign in for Cloudflare (a security key or an authenticator app) and
    GitHub.
 2. **Domain**: buy it in Cloudflare Registrar with auto renew on, then turn on DNSSEC (DNS → Settings).
-3. **Pages project**: Workers & Pages → Create → Pages → Connect to Git. When GitHub asks, give the
-   Cloudflare app access to **only this repository**. Framework preset **None**, build command
-   **`sh scripts/build.sh`**, build output **`dist`**, production branch **`main`**. Under Settings →
-   Builds → Branch control, set preview deployments to **None**, so no other branch gets a public address.
-4. **Custom domain**: add the domain and `www` in the project's Custom domains tab. Then redirect
-   `www` and `<project>.pages.dev` to the bare domain with a Bulk Redirect (Rules → Bulk Redirects).
+3. **Worker** (done): Workers & Pages → Create → Import a repository. When GitHub asks, give the
+   Cloudflare app access to **only this repository**. Build command **`sh scripts/build.sh`**, deploy
+   command **`npx wrangler deploy`**, production branch **`main`**. Under Settings → Build → Branch
+   control, leave builds for other branches **off**. The Worker's name must stay `portfolio`, as in
+   `wrangler.jsonc`, which also turns off a public address per uploaded version (`preview_urls`).
+4. **Custom domain**: the Worker → Settings → Domains & Routes → Add → Custom domain, once for the
+   domain and once for `www`. Then send `www` to the bare domain: Rules → Redirect Rules → the
+   "Redirect from WWW to root" template. The workers.dev address stays up but out of search results.
 5. **Zone settings that would break the policy or the email links**, all off: Scrape Shield → Email
    Address Obfuscation, Speed → Rocket Loader, Security → Bot Fight Mode, and Zaraz. SSL/TLS → Edge
    Certificates: Always Use HTTPS on, minimum TLS 1.2, TLS 1.3 on. Leave the dashboard's HSTS setting off:
@@ -173,8 +181,9 @@ First time setup, in this order:
 6. **DNS records** so nobody can send email as the domain (it sends none):
    `TXT @ "v=spf1 -all"`, `TXT _dmarc "v=DMARC1; p=reject; sp=reject; adkim=s; aspf=s"` and `MX @ 0 .`
    (a null MX). If you later want email at the domain, replace these with Cloudflare Email Routing's.
-7. **Analytics**: the Pages project → Metrics → Web Analytics → Enable. Cloudflare adds its beacon to
-   every page; the policy already allows it.
+7. **Analytics**: Analytics & Logs → Web Analytics → Add a site → the domain. If it offers automatic
+   setup, use it; if it hands you a `<script>` snippet instead, it goes in the `<head>` of `index.html`.
+   Either way the policy already allows Cloudflare's beacon.
 8. **GitHub**: Settings → Rules → a ruleset on `main` that blocks force pushes and deletion.
 9. Add `Canonical: https://<domain>/.well-known/security.txt` to `.well-known/security.txt`.
 
@@ -182,8 +191,8 @@ After each deploy, check the headers arrive (`curl -sI https://<domain>/`), that
 404 with the same headers, and that `/README.md` and `/.git/config` are 404. Mozilla's HTTP Observatory
 and SSL Labs grade the headers and TLS.
 
-To undo a bad deploy: the Pages project → Deployments → pick an earlier one → Rollback. Or `git revert`
-the change and push.
+To undo a bad deploy: the Worker → Deployments → pick an earlier version → Rollback. Or `git revert` the
+change and push.
 
 ## Credits
 
