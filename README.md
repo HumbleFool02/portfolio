@@ -158,8 +158,8 @@ every push to `main`. Cloudflare runs `sh scripts/build.sh`, then `npx wrangler 
 `_headers`, `.well-known/`, `assets/` and `data/`, so the README, scripts and editor settings are never
 published. To check a build locally: `sh scripts/build.sh` then `python3 scripts/serve.py --root dist`.
 
-Live now at <https://portfolio.kaslepiyush07.workers.dev> (kept out of search results until the custom
-domain takes over).
+Live at <https://piyushkasle.dev>. The Worker's own address, <https://portfolio.kaslepiyush07.workers.dev>,
+still works but is kept out of search results.
 
 First time setup, in this order:
 
@@ -171,9 +171,10 @@ First time setup, in this order:
    command **`npx wrangler deploy`**, production branch **`main`**. Under Settings → Build → Branch
    control, leave builds for other branches **off**. The Worker's name must stay `portfolio`, as in
    `wrangler.jsonc`, which also turns off a public address per uploaded version (`preview_urls`).
-4. **Custom domain**: the Worker → Settings → Domains & Routes → Add → Custom domain, once for the
-   domain and once for `www`. Then send `www` to the bare domain: Rules → Redirect Rules → the
-   "Redirect from WWW to root" template. The workers.dev address stays up but out of search results.
+4. **Custom domain**: the Worker → Settings → Domains & Routes → Add → Custom domain → the bare domain.
+   Cloudflare creates its DNS record and certificate. For `www`, add a placeholder DNS record (`A www
+   192.0.2.0`, Proxied), then Rules → Redirect Rules → the "Redirect from WWW to root" template. The
+   workers.dev address stays up but out of search results.
 5. **Zone settings that would break the policy or the email links**, all off: Scrape Shield → Email
    Address Obfuscation, Speed → Rocket Loader, Security → Bot Fight Mode, and Zaraz. SSL/TLS → Edge
    Certificates: Always Use HTTPS on, minimum TLS 1.2, TLS 1.3 on. Leave the dashboard's HSTS setting off:
@@ -181,13 +182,14 @@ First time setup, in this order:
 6. **DNS records** so nobody can send email as the domain (it sends none):
    `TXT @ "v=spf1 -all"`, `TXT _dmarc "v=DMARC1; p=reject; sp=reject; adkim=s; aspf=s"` and `MX @ 0 .`
    (a null MX). If you later want email at the domain, replace these with Cloudflare Email Routing's.
-7. **Analytics**: Analytics & Logs → Web Analytics → Add a site → the domain. If it offers automatic
-   setup, use it; if it hands you a `<script>` snippet instead, it goes in the `<head>` of `index.html`.
-   Either way the policy already allows Cloudflare's beacon.
+7. **Analytics**: Analytics & Logs → Web Analytics → Add a site → the domain, with automatic setup (it
+   works because the domain is proxied through Cloudflare). The beacon loads from
+   `static.cloudflareinsights.com` and reports to the site's own `/cdn-cgi/rum`, both already allowed.
 8. **GitHub**: Settings → Rules → a ruleset on `main` that blocks force pushes and deletion.
-9. Add `Canonical: https://<domain>/.well-known/security.txt` to `.well-known/security.txt`.
+9. Add `Canonical: https://<domain>/.well-known/security.txt` to `.well-known/security.txt` (done for
+   piyushkasle.dev).
 
-After each deploy, check the headers arrive (`curl -sI https://<domain>/`), that a missing page answers
+After each deploy, check the headers arrive (`curl -sI https://piyushkasle.dev/`), that a missing page answers
 404 with the same headers, and that `/README.md` and `/.git/config` are 404. Mozilla's HTTP Observatory
 and SSL Labs grade the headers and TLS.
 
