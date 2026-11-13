@@ -1,11 +1,33 @@
-# Response headers for Cloudflare (Pages and Workers static assets read this file from the deployed folder).
-# These are the protections a page can't give itself with a <meta> tag; the main
-# Content-Security-Policy lives in index.html.
+# Response headers for every file the site serves. Cloudflare Pages reads this file from the published folder,
+# and scripts/serve.py sends the same headers locally, so a policy problem shows up before it's deployed.
+# This is the only place the security policy lives: the pages carry no <meta> copy of it.
+#
+# Content-Security-Policy: everything comes from this site. The two Cloudflare hosts are for Web Analytics only
+#   (its beacon script, and where the beacon reports). data: images are the CSS noise texture. No inline scripts
+#   or style attributes, no plugins, frames or forms, and no framing of this site by others (frame-ancestors).
+#   Trusted Types blocks any script that tries to write HTML or script URLs into the page; the site's own code
+#   never does.
+# Permissions-Policy: no sensors, camera, microphone, location, payments, USB or ad topics. Autoplay is left
+#   alone, so the warp and the black hole can still be heard after a click.
+# Cross-Origin-*: other sites can neither reach into this page's window nor embed its files.
 /*
-  Content-Security-Policy: frame-ancestors 'none'
+  Content-Security-Policy: default-src 'none'; script-src 'self' https://static.cloudflareinsights.com; style-src 'self'; img-src 'self' data:; font-src 'self'; connect-src 'self' https://cloudflareinsights.com; base-uri 'none'; form-action 'none'; frame-ancestors 'none'; object-src 'none'; upgrade-insecure-requests; require-trusted-types-for 'script'; trusted-types 'none'
   X-Frame-Options: DENY
   X-Content-Type-Options: nosniff
   Referrer-Policy: strict-origin-when-cross-origin
-  Permissions-Policy: camera=(), microphone=(), geolocation=(), payment=(), usb=(), interest-cohort=()
+  Permissions-Policy: accelerometer=(), camera=(), geolocation=(), gyroscope=(), magnetometer=(), microphone=(), payment=(), usb=(), browsing-topics=()
   Cross-Origin-Opener-Policy: same-origin
-  Strict-Transport-Security: max-age=31536000
+  Cross-Origin-Resource-Policy: same-origin
+  Strict-Transport-Security: max-age=31536000; includeSubDomains
+
+# the resume shows a phone number and city: readable from the site, kept out of search results
+/assets/resume/*
+  X-Robots-Tag: noindex
+
+# the fonts never change under the same name, so browsers may keep them for a year
+/assets/fonts/*
+  Cache-Control: public, max-age=31536000, immutable
+
+# the project's pages.dev address stays reachable, but only the custom domain should be in search results
+https://:project.pages.dev/*
+  X-Robots-Tag: noindex

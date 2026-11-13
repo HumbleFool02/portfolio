@@ -3,7 +3,9 @@
 A single-page portfolio set against a live night sky: the 32 constellations drawn at their real
 J2000 positions, drifting slowly behind the content.
 
-Plain HTML, CSS and ES modules. No build step and no dependencies.
+Plain HTML, CSS and ES modules. No build step and no dependencies. Fonts, icons and everything else are
+served from the site itself, so a visit makes no requests to anyone else (apart from Cloudflare's
+cookieless analytics once deployed).
 
 ## Run it
 
@@ -14,8 +16,10 @@ directly won't work):
 python3 scripts/serve.py
 ```
 
-Then open <http://localhost:8000>. It's the standard Python file server, plus a header that makes the
-browser check for newer files on every load, so edits show up on a normal reload.
+Then open <http://localhost:8000>. It's the standard Python file server, plus: it sends the live site's
+security headers from `_headers` (so anything the policy would block in production is blocked here too),
+it makes the browser check for newer files on every load, so edits show up on a normal reload, and a
+missing page gets `404.html`.
 
 ## Layout
 
@@ -42,12 +46,15 @@ assets/resume/          the resume PDF; links open it in the browser's viewer, i
 assets/icons/           favicon (SVG, 32px PNG, apple-touch-icon) and the text-badge stack icons. The favicon
                         is from Icons8, whose free licence needs a visible link to icons8.com: it's in the
                         footer and on the 404 page
+assets/icons/brands/    the stack's logos, from Simple Icons (CC0), saved here rather than loaded from a CDN
+assets/fonts/           Space Grotesk and JetBrains Mono (woff2, SIL Open Font License, licences beside them)
 assets/audio/           the black hole's sound, a 20 s seamless loop (AAC, 111 KB)
 data/sky.json           constellation data, generated (don't edit by hand)
 scripts/constellations.py
 scripts/build.sh        copies just the site into dist/ for publishing
 scripts/serve.py        local dev server
-404.html, _headers      the not-found page and the host's security headers (published with the site)
+404.html, _headers      the not-found page and the security headers (published with the site; see Security)
+.well-known/security.txt  how to report a security problem (RFC 9116); renew its Expires date yearly
 ```
 
 ## Constellation data
@@ -119,27 +126,71 @@ one fills the row; with more, the first sits beside a stack of the others.
 
 ## Security
 
-- `index.html` sets a Content-Security-Policy: only this site, Google Fonts and the Simple Icons CDN may
-  load anything, and inline scripts and inline `style` attributes are blocked. So scripts go in
-  `assets/js/`, styles in `site.css`, and a new outside service (analytics, say) needs adding to the policy.
-- `_headers` gives Cloudflare the protections a meta tag can't: no framing by other sites
-  (`frame-ancestors 'none'`), `nosniff`, HSTS, a referrer policy and a locked-down permissions policy.
-- Only `dist/` is published (see Deploy), so `scripts/`, `.claude/` and `.vscode/` stay local.
+All the protective headers live in `_headers`, the one place they're set (the pages carry no `<meta>` copy).
+Cloudflare sends them with every file, and `scripts/serve.py` sends the same ones locally.
+
+- **Content-Security-Policy**: everything comes from this site. The only outside hosts are Cloudflare's
+  analytics beacon (`static.cloudflareinsights.com`) and where it reports (`cloudflareinsights.com`).
+  No inline scripts or `style` attributes, no plugins, frames or forms, and other sites can't frame this
+  one. So scripts go in `assets/js/`, styles in `site.css`, and any new outside service has to be added
+  to the policy. Trusted Types is enforced: code may not write HTML or script URLs into the page
+  (`innerHTML` and the like), so build elements with `createElement` and `textContent`.
+- **HSTS** (one year, subdomains too), `nosniff`, `X-Frame-Options: DENY`, a referrer policy that sends
+  other sites only the origin, and a permissions policy that turns off sensors, camera, microphone,
+  location, payments, USB and ad topics. Autoplay is left alone so the sounds can play after a click.
+- **Cross-origin isolation of the window and files**: `Cross-Origin-Opener-Policy` and
+  `Cross-Origin-Resource-Policy` are both `same-origin`.
+- **The resume PDF** (`/assets/resume/*`) is sent with `X-Robots-Tag: noindex`, so search engines don't
+  list it and its phone number. The `pages.dev` address is noindexed too, so only the custom domain is
+  listed.
+- Only `dist/` is published (see Deploy), so the README, `scripts/`, `.claude/` and `.vscode/` stay local.
 - `scripts/serve.py` listens on this machine only and refuses hidden paths such as `/.git/`.
 
-## Deploy (Cloudflare)
+To check the policy after a change, run `sh scripts/build.sh`, then `python3 scripts/serve.py --root dist`,
+go through the page with the browser console open, and look for "Refused to" messages.
 
-Free, with no bandwidth cap, a private repo is fine, and it redeploys on every push.
+## Deploy (Cloudflare Pages)
 
-1. Put the repo on GitHub (it can be private).
-2. In the Cloudflare dashboard: Workers & Pages → Create → Pages → Connect to Git → pick the repo.
-3. Build settings: framework preset **None**, build command **`sh scripts/build.sh`**, build output
-   directory **`dist`**. Deploy. The site goes live at `<project>.pages.dev`.
-4. Optional: a custom domain (Custom domains tab). Cloudflare Registrar sells domains at cost.
+Free, with no bandwidth cap, and it redeploys on every push to `main`. `dist/` holds only `index.html`,
+`404.html`, `_headers`, `.well-known/`, `assets/` and `data/`, so the README, scripts and editor settings
+are never published. To check a build locally: `sh scripts/build.sh` then `python3 scripts/serve.py --root dist`.
 
-`dist/` holds only `index.html`, `404.html`, `_headers`, `assets/` and `data/`, so the README, scripts and
-editor settings are never published. To check a build locally: `sh scripts/build.sh` then
-`python3 scripts/serve.py --root dist`.
+First time setup, in this order:
+
+1. **Accounts**: turn on two factor sign in for Cloudflare (a security key or an authenticator app) and
+   GitHub.
+2. **Domain**: buy it in Cloudflare Registrar with auto renew on, then turn on DNSSEC (DNS → Settings).
+3. **Pages project**: Workers & Pages → Create → Pages → Connect to Git. When GitHub asks, give the
+   Cloudflare app access to **only this repository**. Framework preset **None**, build command
+   **`sh scripts/build.sh`**, build output **`dist`**, production branch **`main`**. Under Settings →
+   Builds → Branch control, set preview deployments to **None**, so no other branch gets a public address.
+4. **Custom domain**: add the domain and `www` in the project's Custom domains tab. Then redirect
+   `www` and `<project>.pages.dev` to the bare domain with a Bulk Redirect (Rules → Bulk Redirects).
+5. **Zone settings that would break the policy or the email links**, all off: Scrape Shield → Email
+   Address Obfuscation, Speed → Rocket Loader, Security → Bot Fight Mode, and Zaraz. SSL/TLS → Edge
+   Certificates: Always Use HTTPS on, minimum TLS 1.2, TLS 1.3 on. Leave the dashboard's HSTS setting off:
+   `_headers` already sends it.
+6. **DNS records** so nobody can send email as the domain (it sends none):
+   `TXT @ "v=spf1 -all"`, `TXT _dmarc "v=DMARC1; p=reject; sp=reject; adkim=s; aspf=s"` and `MX @ 0 .`
+   (a null MX). If you later want email at the domain, replace these with Cloudflare Email Routing's.
+7. **Analytics**: the Pages project → Metrics → Web Analytics → Enable. Cloudflare adds its beacon to
+   every page; the policy already allows it.
+8. **GitHub**: Settings → Rules → a ruleset on `main` that blocks force pushes and deletion.
+9. Add `Canonical: https://<domain>/.well-known/security.txt` to `.well-known/security.txt`.
+
+After each deploy, check the headers arrive (`curl -sI https://<domain>/`), that a missing page answers
+404 with the same headers, and that `/README.md` and `/.git/config` are 404. Mozilla's HTTP Observatory
+and SSL Labs grade the headers and TLS.
+
+To undo a bad deploy: the Pages project → Deployments → pick an earlier one → Rollback. Or `git revert`
+the change and push.
+
+## Credits
+
+- Black hole sound: NASA/CXC/SAO/K. Arcand, SYSTEM Sounds (M. Russo, A. Santaguida), credited in the footer.
+- Favicon: Icons8 (free licence with a link, in the footer and on the 404 page).
+- Fonts: Space Grotesk and JetBrains Mono, SIL Open Font License 1.1 (`assets/fonts/OFL-*.txt`).
+- Stack logos: Simple Icons, CC0.
 
 ## Still placeholder
 

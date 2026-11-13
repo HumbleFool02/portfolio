@@ -2,10 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <!-- only this site, Google Fonts and the Simple Icons CDN may load anything; no inline scripts or styles,
-       no plugins, no forms. frame-ancestors (clickjacking) can only be set as a header by the host. -->
-  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data: https://cdn.simpleicons.org; connect-src 'self'; object-src 'none'; base-uri 'self'; form-action 'none'">
-  <meta name="referrer" content="strict-origin-when-cross-origin">
+  <!-- the security policy and the other protective headers come from the host: see _headers -->
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Piyush Kasle</title>
   <meta name="description" content="Piyush Kasle, software engineer for backend and full stack work with a lean toward ML infrastructure: model serving, deployment and monitoring. MS Software Engineering, Florida Tech. Available to start immediately.">
@@ -14,9 +11,7 @@
   <link rel="icon" href="assets/icons/favicon.svg" type="image/svg+xml">
   <link rel="icon" href="assets/icons/favicon-32.png" type="image/png" sizes="32x32">
   <link rel="apple-touch-icon" href="assets/icons/apple-touch-icon.png">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap">
+  <link rel="preload" href="assets/fonts/space-grotesk-latin.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="stylesheet" href="assets/css/site.css">
   <link rel="preload" href="data/sky.json" as="fetch" crossorigin>
   <script src="assets/js/intro-gate.js"></script>
@@ -161,40 +156,40 @@
           <div class="stack__row">
             <h3 class="stack__label">Languages</h3>
             <ul class="chips">
-              <li class="chip"><img src="https://cdn.simpleicons.org/python/d8d3c8" alt="" width="16" height="16" loading="lazy">Python</li>
-              <li class="chip"><img src="https://cdn.simpleicons.org/openjdk/d8d3c8" alt="" width="16" height="16" loading="lazy">Java</li>
-              <li class="chip"><img src="https://cdn.simpleicons.org/javascript/d8d3c8" alt="" width="16" height="16" loading="lazy">JavaScript</li>
+              <li class="chip"><img src="assets/icons/brands/python.svg" alt="" width="16" height="16" loading="lazy">Python</li>
+              <li class="chip"><img src="assets/icons/brands/openjdk.svg" alt="" width="16" height="16" loading="lazy">Java</li>
+              <li class="chip"><img src="assets/icons/brands/javascript.svg" alt="" width="16" height="16" loading="lazy">JavaScript</li>
               <li class="chip"><img src="assets/icons/sql.svg" alt="" width="16" height="16">SQL</li>
             </ul>
           </div>
           <div class="stack__row">
             <h3 class="stack__label">Backend &amp; web</h3>
             <ul class="chips">
-              <li class="chip"><img src="https://cdn.simpleicons.org/fastapi/d8d3c8" alt="" width="16" height="16" loading="lazy">FastAPI</li>
-              <li class="chip"><img src="https://cdn.simpleicons.org/flask/d8d3c8" alt="" width="16" height="16" loading="lazy">Flask</li>
-              <li class="chip"><img src="https://cdn.simpleicons.org/express/d8d3c8" alt="" width="16" height="16" loading="lazy">Express.js</li>
-              <li class="chip"><img src="https://cdn.simpleicons.org/nodedotjs/d8d3c8" alt="" width="16" height="16" loading="lazy">Node.js</li>
-              <li class="chip"><img src="https://cdn.simpleicons.org/react/d8d3c8" alt="" width="16" height="16" loading="lazy">React</li>
+              <li class="chip"><img src="assets/icons/brands/fastapi.svg" alt="" width="16" height="16" loading="lazy">FastAPI</li>
+              <li class="chip"><img src="assets/icons/brands/flask.svg" alt="" width="16" height="16" loading="lazy">Flask</li>
+              <li class="chip"><img src="assets/icons/brands/express.svg" alt="" width="16" height="16" loading="lazy">Express.js</li>
+              <li class="chip"><img src="assets/icons/brands/nodedotjs.svg" alt="" width="16" height="16" loading="lazy">Node.js</li>
+              <li class="chip"><img src="assets/icons/brands/react.svg" alt="" width="16" height="16" loading="lazy">React</li>
             </ul>
           </div>
           <div class="stack__row">
             <h3 class="stack__label">Databases &amp; caching</h3>
             <ul class="chips">
-              <li class="chip"><img src="https://cdn.simpleicons.org/postgresql/d8d3c8" alt="" width="16" height="16" loading="lazy">PostgreSQL</li>
-              <li class="chip"><img src="https://cdn.simpleicons.org/mysql/d8d3c8" alt="" width="16" height="16" loading="lazy">MySQL</li>
-              <li class="chip"><img src="https://cdn.simpleicons.org/redis/d8d3c8" alt="" width="16" height="16" loading="lazy">Redis</li>
+              <li class="chip"><img src="assets/icons/brands/postgresql.svg" alt="" width="16" height="16" loading="lazy">PostgreSQL</li>
+              <li class="chip"><img src="assets/icons/brands/mysql.svg" alt="" width="16" height="16" loading="lazy">MySQL</li>
+              <li class="chip"><img src="assets/icons/brands/redis.svg" alt="" width="16" height="16" loading="lazy">Redis</li>
             </ul>
           </div>
           <div class="stack__row">
             <h3 class="stack__label">ML &amp; computer vision</h3>
             <ul class="chips">
-              <li class="chip"><img src="https://cdn.simpleicons.org/pytorch/d8d3c8" alt="" width="16" height="16" loading="lazy">PyTorch</li>
-              <li class="chip"><img src="https://cdn.simpleicons.org/huggingface/d8d3c8" alt="" width="16" height="16" loading="lazy">Hugging Face</li>
-              <li class="chip"><img src="https://cdn.simpleicons.org/scikitlearn/d8d3c8" alt="" width="16" height="16" loading="lazy">scikit-learn</li>
+              <li class="chip"><img src="assets/icons/brands/pytorch.svg" alt="" width="16" height="16" loading="lazy">PyTorch</li>
+              <li class="chip"><img src="assets/icons/brands/huggingface.svg" alt="" width="16" height="16" loading="lazy">Hugging Face</li>
+              <li class="chip"><img src="assets/icons/brands/scikitlearn.svg" alt="" width="16" height="16" loading="lazy">scikit-learn</li>
               <li class="chip"><img src="assets/icons/lightgbm.svg" alt="" width="16" height="16">LightGBM</li>
-              <li class="chip"><img src="https://cdn.simpleicons.org/pandas/d8d3c8" alt="" width="16" height="16" loading="lazy">pandas</li>
-              <li class="chip"><img src="https://cdn.simpleicons.org/opencv/d8d3c8" alt="" width="16" height="16" loading="lazy">OpenCV</li>
-              <li class="chip"><img src="https://cdn.simpleicons.org/ultralytics/d8d3c8" alt="" width="16" height="16" loading="lazy">YOLOv8</li>
+              <li class="chip"><img src="assets/icons/brands/pandas.svg" alt="" width="16" height="16" loading="lazy">pandas</li>
+              <li class="chip"><img src="assets/icons/brands/opencv.svg" alt="" width="16" height="16" loading="lazy">OpenCV</li>
+              <li class="chip"><img src="assets/icons/brands/ultralytics.svg" alt="" width="16" height="16" loading="lazy">YOLOv8</li>
             </ul>
           </div>
           <div class="stack__row">
@@ -202,36 +197,36 @@
             <ul class="chips">
               <li class="chip"><img src="assets/icons/aws.svg" alt="" width="16" height="16">AWS EC2</li>
               <li class="chip"><img src="assets/icons/aws.svg" alt="" width="16" height="16">AWS S3</li>
-              <li class="chip"><img src="https://cdn.simpleicons.org/docker/d8d3c8" alt="" width="16" height="16" loading="lazy">Docker</li>
-              <li class="chip"><img src="https://cdn.simpleicons.org/githubactions/d8d3c8" alt="" width="16" height="16" loading="lazy">GitHub Actions</li>
-              <li class="chip"><img src="https://cdn.simpleicons.org/linux/d8d3c8" alt="" width="16" height="16" loading="lazy">Linux</li>
+              <li class="chip"><img src="assets/icons/brands/docker.svg" alt="" width="16" height="16" loading="lazy">Docker</li>
+              <li class="chip"><img src="assets/icons/brands/githubactions.svg" alt="" width="16" height="16" loading="lazy">GitHub Actions</li>
+              <li class="chip"><img src="assets/icons/brands/linux.svg" alt="" width="16" height="16" loading="lazy">Linux</li>
             </ul>
           </div>
           <div class="stack__row">
             <h3 class="stack__label">APIs &amp; integrations</h3>
             <ul class="chips">
-              <li class="chip"><img src="https://cdn.simpleicons.org/googlemeet/d8d3c8" alt="" width="16" height="16" loading="lazy">Google Meet API</li>
-              <li class="chip"><img src="https://cdn.simpleicons.org/mailgun/d8d3c8" alt="" width="16" height="16" loading="lazy">Mailgun</li>
-              <li class="chip"><img src="https://cdn.simpleicons.org/razorpay/d8d3c8" alt="" width="16" height="16" loading="lazy">Razorpay</li>
-              <li class="chip"><img src="https://cdn.simpleicons.org/jsonwebtokens/d8d3c8" alt="" width="16" height="16" loading="lazy">JWT</li>
+              <li class="chip"><img src="assets/icons/brands/googlemeet.svg" alt="" width="16" height="16" loading="lazy">Google Meet API</li>
+              <li class="chip"><img src="assets/icons/brands/mailgun.svg" alt="" width="16" height="16" loading="lazy">Mailgun</li>
+              <li class="chip"><img src="assets/icons/brands/razorpay.svg" alt="" width="16" height="16" loading="lazy">Razorpay</li>
+              <li class="chip"><img src="assets/icons/brands/jsonwebtokens.svg" alt="" width="16" height="16" loading="lazy">JWT</li>
             </ul>
           </div>
           <div class="stack__row">
             <h3 class="stack__label">Testing &amp; tools</h3>
             <ul class="chips">
-              <li class="chip"><img src="https://cdn.simpleicons.org/pytest/d8d3c8" alt="" width="16" height="16" loading="lazy">pytest</li>
-              <li class="chip"><img src="https://cdn.simpleicons.org/postman/d8d3c8" alt="" width="16" height="16" loading="lazy">Postman</li>
-              <li class="chip"><img src="https://cdn.simpleicons.org/git/d8d3c8" alt="" width="16" height="16" loading="lazy">Git</li>
-              <li class="chip"><img src="https://cdn.simpleicons.org/streamlit/d8d3c8" alt="" width="16" height="16" loading="lazy">Streamlit</li>
-              <li class="chip"><img src="https://cdn.simpleicons.org/plotly/d8d3c8" alt="" width="16" height="16" loading="lazy">Plotly</li>
+              <li class="chip"><img src="assets/icons/brands/pytest.svg" alt="" width="16" height="16" loading="lazy">pytest</li>
+              <li class="chip"><img src="assets/icons/brands/postman.svg" alt="" width="16" height="16" loading="lazy">Postman</li>
+              <li class="chip"><img src="assets/icons/brands/git.svg" alt="" width="16" height="16" loading="lazy">Git</li>
+              <li class="chip"><img src="assets/icons/brands/streamlit.svg" alt="" width="16" height="16" loading="lazy">Streamlit</li>
+              <li class="chip"><img src="assets/icons/brands/plotly.svg" alt="" width="16" height="16" loading="lazy">Plotly</li>
             </ul>
           </div>
           <div class="stack__row">
             <h3 class="stack__label">Embedded</h3>
             <ul class="chips">
-              <li class="chip"><img src="https://cdn.simpleicons.org/cplusplus/d8d3c8" alt="" width="16" height="16" loading="lazy">C/C++</li>
-              <li class="chip"><img src="https://cdn.simpleicons.org/arduino/d8d3c8" alt="" width="16" height="16" loading="lazy">Arduino</li>
-              <li class="chip"><img src="https://cdn.simpleicons.org/stmicroelectronics/d8d3c8" alt="" width="16" height="16" loading="lazy">STM32</li>
+              <li class="chip"><img src="assets/icons/brands/cplusplus.svg" alt="" width="16" height="16" loading="lazy">C/C++</li>
+              <li class="chip"><img src="assets/icons/brands/arduino.svg" alt="" width="16" height="16" loading="lazy">Arduino</li>
+              <li class="chip"><img src="assets/icons/brands/stmicroelectronics.svg" alt="" width="16" height="16" loading="lazy">STM32</li>
             </ul>
           </div>
         </div>
@@ -634,7 +629,7 @@
     </div>
     <footer class="site-footer">
       <span>© <span data-year>2026</span> Piyush Kasle</span>
-      <span class="made">Made with <svg class="made__heart" width="13" height="13" aria-hidden="true"><use href="#heart"/></svg><span class="sr-only">love</span> and <img class="made__claude" src="https://cdn.simpleicons.org/claude" alt="Claude" title="Claude" width="14" height="14"></span>
+      <span class="made">Made with <svg class="made__heart" width="13" height="13" aria-hidden="true"><use href="#heart"/></svg><span class="sr-only">love</span> and <img class="made__claude" src="assets/icons/brands/claude.svg" alt="Claude" title="Claude" width="14" height="14"></span>
       <button type="button" class="replay" data-replay-intro>↻ replay warp, with sound</button>
       <span class="credits"><span class="credits__sound">Black hole sound: <a href="https://chandra.si.edu/sound/perseus.html" target="_blank" rel="noopener">Perseus cluster sonification</a>, NASA/CXC/SAO/K. Arcand, SYSTEM Sounds (M. Russo, A. Santaguida)</span><span class="credits__icon">Favicon by <a href="https://icons8.com" target="_blank" rel="noopener">Icons8</a></span></span>
     </footer>
