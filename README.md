@@ -34,7 +34,7 @@ assets/js/page-bend.js  the page's words and cards lean into the gravity well, o
 assets/js/ship-cursor.js the spacecraft cursor, which falls into the black hole while you hold
 assets/js/timeline.js   Experience section: the line fills and each stop lights as you scroll
 assets/js/sidereal.js   local sidereal time clock in the hero
-assets/js/comet.js      the comet that circles the hero button's edge
+assets/js/comet.js      the comet that circles the Enter button and the Resume button in Contact
 assets/js/sunmoon.js    sun by day, moon by night in the hero, drawn on a canvas (real moon phase)
 assets/js/gravity-bend.js  lets the sun or moon lean into the gravity well and recoil on release
 assets/js/project-cards.js opens each project card's write-up in a dialog
@@ -77,7 +77,7 @@ from there too, so changing the accent in that one place changes it everywhere. 
 blue; the original neutral-black values are noted in a comment beside `--pk-bg`.
 
 Motion respects `prefers-reduced-motion`: no warp intro, no drift or twinkle, no gravity well,
-and the hero button keeps its outline without the circling comet.
+and the Resume button in Contact keeps its outline without the circling comet.
 
 ## The warp and the Enter screen
 
