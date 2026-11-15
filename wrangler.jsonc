@@ -9,8 +9,8 @@
     // a missing page gets 404.html with a 404 status
     "not_found_handling": "404-page"
   },
-  // the portfolio.<account>.workers.dev address stays up (_headers keeps it out of search results)
-  "workers_dev": true,
+  // no portfolio.<account>.workers.dev address: the site answers only at its custom domain, piyushkasle.dev
+  "workers_dev": false,
   // no extra public address for every uploaded version
   "preview_urls": false
 }

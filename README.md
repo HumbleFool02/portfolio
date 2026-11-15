@@ -142,8 +142,7 @@ Cloudflare sends them with every file, and `scripts/serve.py` sends the same one
 - **Cross-origin isolation of the window and files**: `Cross-Origin-Opener-Policy` and
   `Cross-Origin-Resource-Policy` are both `same-origin`.
 - **The resume PDF** (`/assets/resume/*`) is sent with `X-Robots-Tag: noindex`, so search engines don't
-  list it and its phone number. The `workers.dev` address is noindexed too, so only the custom domain is
-  listed.
+  list it and its phone number.
 - Only `dist/` is published (see Deploy), so the README, `scripts/`, `.claude/` and `.vscode/` stay local.
 - `scripts/serve.py` listens on this machine only and refuses hidden paths such as `/.git/`.
 
@@ -158,8 +157,8 @@ every push to `main`. Cloudflare runs `sh scripts/build.sh`, then `npx wrangler 
 `_headers`, `.well-known/`, `assets/` and `data/`, so the README, scripts and editor settings are never
 published. To check a build locally: `sh scripts/build.sh` then `python3 scripts/serve.py --root dist`.
 
-Live at <https://piyushkasle.dev>. The Worker's own address, <https://portfolio.kaslepiyush07.workers.dev>,
-still works but is kept out of search results.
+Live at <https://piyushkasle.dev>, and only there: `wrangler.jsonc` turns off the Worker's own
+`workers.dev` address (`workers_dev: false`).
 
 First time setup, in this order:
 
@@ -174,7 +173,7 @@ First time setup, in this order:
 4. **Custom domain**: the Worker → Settings → Domains & Routes → Add → Custom domain → the bare domain.
    Cloudflare creates its DNS record and certificate. For `www`, add a placeholder DNS record (`A www
    192.0.2.0`, Proxied), then Rules → Redirect Rules → the "Redirect from WWW to root" template. The
-   workers.dev address stays up but out of search results.
+   workers.dev address is off (`workers_dev: false` in `wrangler.jsonc`).
 5. **Zone settings that would break the policy or the email links**, all off: Scrape Shield → Email
    Address Obfuscation, Speed → Rocket Loader, Security → Bot Fight Mode, and Zaraz. SSL/TLS → Edge
    Certificates: Always Use HTTPS on, minimum TLS 1.2, TLS 1.3 on. Leave the dashboard's HSTS setting off:
