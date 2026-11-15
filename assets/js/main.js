@@ -13,7 +13,7 @@ import { startEmailLinks } from './email-links.js';
 import { startEnterGate } from './enter-gate.js';
 import { startShipCursor } from './ship-cursor.js';
 
-const MELBOURNE_FL_LONGITUDE = -80.6081;  // degrees, east positive
+const SEATTLE_WA_LONGITUDE = -122.3321;  // degrees, east positive
 
 const root = document.documentElement;
 root.setAttribute('data-pk-ready', '');  // tells intro-gate.js the page's code is running
@@ -102,7 +102,7 @@ if (timeline) startTimeline(timeline);
 
 // sidereal clock in the hero
 const lst = document.querySelector('[data-lst]');
-if (lst) startSiderealClock(lst, MELBOURNE_FL_LONGITUDE);
+if (lst) startSiderealClock(lst, SEATTLE_WA_LONGITUDE);
 
 // header: mark the section in the middle of the viewport
 const navLinks = new Map(
