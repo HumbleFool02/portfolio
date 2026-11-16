@@ -14,12 +14,12 @@
  *
  * Options:
  *   wrap, inner, canvas, caption  DOM elements (see the markup in the brief)
- *   mode   'local' (default: sun 6 am to 6 pm on the visitor's clock) | 'melbourne'
+ *   mode   'local' (default: sun 6 am to 6 pm on the visitor's clock) | 'location'
  *          (real sunrise and sunset at `location`) | 'sun' | 'moon' | 'off'
  *   phase  'real' (default) | 'full' | 'half' | 'crescent'
  *   location  { lat, lon } in degrees, east positive; default Melbourne, Florida
  *   canStart  () => boolean; heavy drawing waits until it returns true (e.g. after an intro)
- *   urlOverride  read ?sky=local|melbourne|sun|moon|off and &phase=real|full|half|crescent (default true)
+ *   urlOverride  read ?sky=local|location|sun|moon|off and &phase=real|full|half|crescent (default true)
  */
 // ---------- sun and moon: drawn pixel by pixel with real lighting ----------
 const pkHash = (x, y) => {
@@ -497,7 +497,7 @@ export function createSunMoon(opts) {
     let kind;
     if (mode === 'sun') kind = 'sun';
     else if (mode === 'moon') kind = 'moon';
-    else if (mode === 'melbourne') kind = pkSunAltitude(now, location.lat, location.lon) > -0.833 ? 'sun' : 'moon';
+    else if (mode === 'location') kind = pkSunAltitude(now, location.lat, location.lon) > -0.833 ? 'sun' : 'moon';
     else { const d = new Date(now), h = d.getHours() + d.getMinutes() / 60; kind = h >= 6 && h < 18 ? 'sun' : 'moon'; }
     let phase = null;
     if (kind === 'moon') {
