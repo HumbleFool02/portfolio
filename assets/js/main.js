@@ -12,8 +12,10 @@ import { attachHoleSound } from './hole-sound.js';
 import { startEmailLinks } from './email-links.js';
 import { startEnterGate } from './enter-gate.js';
 import { startShipCursor } from './ship-cursor.js';
+import { visitorPlace } from './visitor-place.js';
 
-const SEATTLE_WA_LONGITUDE = -122.3321;  // degrees, east positive
+// the visitor's own place, from their time zone: the sidereal clock and the sun or moon in the hero follow it
+const place = visitorPlace();
 
 const root = document.documentElement;
 root.setAttribute('data-pk-ready', '');  // tells intro-gate.js the page's code is running
@@ -64,7 +66,10 @@ if (orb) {
     inner: orb.querySelector('.pk-orb-inner'),
     canvas: orb.querySelector('canvas'),
     caption: orb.querySelector('.pk-orb-cap'),
-    mode: 'local',   // 'local' | 'melbourne' | 'sun' | 'moon' | 'off'; preview with ?sky=sun or ?sky=moon&phase=full
+    // real sunrise and sunset where the visitor is; if their time zone isn't a place (UTC), sun 6 am to 6 pm on
+    // their clock. 'location' | 'local' | 'sun' | 'moon' | 'off'; preview with ?sky=sun or ?sky=moon&phase=full
+    mode: place.lat === null ? 'local' : 'location',
+    location: place,
     phase: 'real',   // 'real' | 'full' | 'half' | 'crescent'
     canStart: () => !document.documentElement.hasAttribute('data-pk-intro'),
   });
@@ -100,9 +105,9 @@ document.querySelectorAll('[data-comet]').forEach(attachComet);
 const timeline = document.querySelector('[data-timeline]');
 if (timeline) startTimeline(timeline);
 
-// sidereal clock in the hero
+// sidereal clock in the hero, for the visitor's longitude
 const lst = document.querySelector('[data-lst]');
-if (lst) startSiderealClock(lst, SEATTLE_WA_LONGITUDE);
+if (lst) startSiderealClock(lst, place.lon);
 
 // header: mark the section in the middle of the viewport
 const navLinks = new Map(

@@ -13,7 +13,7 @@ const pad = (n) => String(n).padStart(2, '0');
 export function formatSidereal(hours) {
   const hh = Math.floor(hours);
   const mf = (hours - hh) * 60, mm = Math.floor(mf), ss = Math.floor((mf - mm) * 60);
-  return `LST ${pad(hh)}h ${pad(mm)}m ${pad(ss)}s`;
+  return `Your LST ${pad(hh)}h ${pad(mm)}m ${pad(ss)}s`;
 }
 
 export function startSiderealClock(el, longitudeDeg) {
